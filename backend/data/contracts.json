@@ -1,0 +1,82 @@
+[
+  {
+    "id": "CON-2026-001",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bid_id": "BID-SUB-003",
+    "bidder_id": "BID-003",
+    "bidder_name": "Nova Engineering Solutions Pvt Ltd",
+    "awarded_by": "Rajesh Kumar",
+    "awarded_by_id": "USR-001",
+    "awarded_at": "2026-09-01T10:00:00",
+    "contract_value": 46500000,
+    "contract_value_display": "₹4.65 Crore",
+    "contract_reference": "CPCL/PUR/2026/001",
+    "status": "DELIVERY_IN_PROGRESS",
+    "delivery_address": "CPCL Refinery, Manali, Chennai - 600068",
+    "delivery_deadline": "2026-11-30",
+    "payment_terms": "30 days post acceptance",
+    "advance_payment_pct": 10,
+    "milestones": [
+      {
+        "id": "MLS-001",
+        "title": "Contract Signed",
+        "due_date": "2026-09-05",
+        "completed_date": "2026-09-04",
+        "status": "COMPLETED",
+        "notes": "Contract signed by both parties."
+      },
+      {
+        "id": "MLS-002",
+        "title": "Advance Payment Released",
+        "due_date": "2026-09-10",
+        "completed_date": "2026-09-08",
+        "status": "COMPLETED",
+        "notes": "10% advance (₹46.5 Lakhs) released as per contract terms."
+      },
+      {
+        "id": "MLS-003",
+        "title": "Equipment Delivery — Batch 1",
+        "due_date": "2026-10-15",
+        "completed_date": "2026-10-20",
+        "status": "COMPLETED",
+        "notes": "Batch 1 delivered with 5-day delay due to logistics. 40 IoT gateway units received."
+      },
+      {
+        "id": "MLS-004",
+        "title": "Quality Inspection — Batch 1",
+        "due_date": "2026-10-25",
+        "completed_date": "2026-10-28",
+        "status": "COMPLETED",
+        "notes": "Inspection completed. 2 defective units identified. Corrective action issued."
+      },
+      {
+        "id": "MLS-005",
+        "title": "Equipment Delivery — Batch 2",
+        "due_date": "2026-11-15",
+        "completed_date": "2026-09-02",
+        "status": "COMPLETED",
+        "notes": "Vendor confirms dispatch on 2026-11-10.",
+        "updated_by": "Rajesh Kumar"
+      },
+      {
+        "id": "MLS-006",
+        "title": "Installation & Commissioning",
+        "due_date": "2026-11-30",
+        "completed_date": null,
+        "status": "PENDING",
+        "notes": null
+      },
+      {
+        "id": "MLS-007",
+        "title": "Final Payment",
+        "due_date": "2026-12-30",
+        "completed_date": null,
+        "status": "PENDING",
+        "notes": "Pending final acceptance."
+      }
+    ],
+    "total_penalty_amount": 23250,
+    "penalty_details": "0.5% penalty for 5-day delivery delay on Batch 1.",
+    "notes": "Contract awarded based on 91% compliance score and LOW risk classification."
+  }
+]

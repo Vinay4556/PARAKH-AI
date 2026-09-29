@@ -1,0 +1,24 @@
+[
+  {
+    "id": "COM-DEMO01",
+    "tender_id": "GEM-DEMO-2026-001",
+    "members": [
+      { "id": "USR-001", "name": "Rajesh Kumar", "role": "Procurement Officer" },
+      { "id": "USR-002", "name": "Priya Sharma", "role": "Technical Expert" },
+      { "id": "USR-003", "name": "Arun Nair", "role": "Domain Specialist" }
+    ],
+    "formed_by": "Rajesh Kumar",
+    "formed_at": "2026-08-25T09:00:00",
+    "updated_at": "2026-08-25T09:00:00",
+    "scores": [
+      { "bid_id": "BID-SUB-001", "evaluator_id": "USR-001", "evaluator_name": "Rajesh Kumar", "score": 80, "comments": "Good technical capability, minor documentation gaps.", "submitted_at": "2026-08-26T10:00:00", "immutable": true },
+      { "bid_id": "BID-SUB-001", "evaluator_id": "USR-002", "evaluator_name": "Priya Sharma", "score": 83, "comments": "Strong IoT track record with government clients.", "submitted_at": "2026-08-26T11:00:00", "immutable": true },
+      { "bid_id": "BID-SUB-001", "evaluator_id": "USR-003", "evaluator_name": "Arun Nair", "score": 82, "comments": "Acceptable. OEM mismatch concern noted.", "submitted_at": "2026-08-26T12:00:00", "immutable": true },
+      { "bid_id": "BID-SUB-003", "evaluator_id": "USR-001", "evaluator_name": "Rajesh Kumar", "score": 91, "comments": "Excellent compliance and delivery record.", "submitted_at": "2026-08-27T10:00:00", "immutable": true },
+      { "bid_id": "BID-SUB-003", "evaluator_id": "USR-002", "evaluator_name": "Priya Sharma", "score": 90, "comments": "Class I Make in India supplier. Strong financials.", "submitted_at": "2026-08-27T11:00:00", "immutable": true },
+      { "bid_id": "BID-SUB-003", "evaluator_id": "USR-003", "evaluator_name": "Arun Nair", "score": 92, "comments": "Best technical offering overall.", "submitted_at": "2026-08-27T12:00:00", "immutable": true }
+    ],
+    "status": "ACTIVE",
+    "aggregate_method": "AVERAGE"
+  }
+]

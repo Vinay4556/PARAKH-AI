@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════
+   PARAKH AI — Government of India Design System
+   Reference: GeM, NIC, MyGov, CPPP portal aesthetics
+   Palette: Deep Navy (#003380) + Saffron (#FF6600) + White
+   Typography: Noto Serif (headings) + Noto Sans (body)
+   Fonts loaded via <link> in index.html
+═══════════════════════════════════════════════════════════ */
+
+/* ── CSS Variables ──────────────────────────────────────── */
+:root {
+  /* Core GoI palette */
+  --goi-navy:          #003380;
+  --goi-navy-dark:     #00205c;
+  --goi-navy-light:    #1a4da8;
+  --goi-saffron:       #FF6600;
+  --goi-saffron-dark:  #cc5200;
+  --goi-green:         #138808;
+  --goi-white:         #ffffff;
+
+  /* Surfaces */
+  --bg-page:           #f0f2f5;
+  --bg-card:           #ffffff;
+  --bg-header:         #003380;
+  --bg-sidebar:        #002060;
+  --bg-sidebar-hover:  rgba(255,255,255,0.10);
+  --bg-sidebar-active: #FF6600;
+  --bg-table-head:     #e8edf5;
+  --bg-table-alt:      #f7f9fc;
+
+  /* Text */
+  --text-primary:      #1a1a2e;
+  --text-secondary:    #3d4a5c;
+  --text-muted:        #6b7a8d;
+  --text-sidebar:      rgba(255,255,255,0.88);
+  --text-sidebar-active: #ffffff;
+  --text-link:         #003380;
+
+  /* Borders */
+  --border-color:      #c8d0db;
+  --border-card:       #d0d8e4;
+  --border-table:      #b8c4d0;
+  --border-strong:     #003380;
+
+  /* Shadows — flat, government-style */
+  --shadow-card:       0 1px 3px rgba(0,51,128,0.10);
+  --shadow-elevated:   0 2px 8px rgba(0,51,128,0.14);
+
+  /* Status */
+  --color-success:     #146c2e;
+  --color-warning:     #7d4e00;
+  --color-danger:      #a3180a;
+  --color-info:        #003380;
+}
+
+/* ── Dark Mode ───────────────────────────────────────────── */
+.dark {
+  --bg-page:           #0d1117;
+  --bg-card:           #161b22;
+  --bg-header:         #0d1117;
+  --bg-sidebar:        #0d1117;
+  --bg-sidebar-hover:  rgba(255,255,255,0.07);
+  --bg-sidebar-active: #FF6600;
+  --bg-table-head:     #1c2128;
+  --bg-table-alt:      #1a1f26;
+
+  --text-primary:      #e6edf3;
+  --text-secondary:    #8b949e;
+  --text-muted:        #6e7681;
+  --text-sidebar:      rgba(230,237,243,0.8);
+  --text-link:         #79b8ff;
+
+  --border-color:      #30363d;
+  --border-card:       #21262d;
+  --border-table:      #2d333b;
+  --border-strong:     #1a4da8;
+
+  --shadow-card:       0 1px 3px rgba(0,0,0,0.4);
+  --shadow-elevated:   0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+@layer base {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    /* Noto Sans as official body font + Kannada support */
+    font-family: 'Noto Sans', 'Noto Sans Kannada', 'Arial', sans-serif;
+    @apply antialiased;
+    transition: background-color 0.15s, color 0.15s;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Noto Serif', 'Georgia', serif;
+    font-weight: 700;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  a { color: var(--text-link); }
+  a:hover { text-decoration: underline; }
+
+  /* Dark mode overrides */
+  .dark .bg-white           { background-color: var(--bg-card) !important; }
+  .dark .bg-gray-50         { background-color: #1c2128 !important; }
+  .dark .bg-gray-100        { background-color: #21262d !important; }
+  .dark .text-slate-800     { color: var(--text-primary) !important; }
+  .dark .text-slate-700     { color: #c9d1d9 !important; }
+  .dark .text-gray-500      { color: var(--text-secondary) !important; }
+  .dark .text-gray-400      { color: var(--text-muted) !important; }
+  .dark .border-gray-100    { border-color: var(--border-card) !important; }
+  .dark .border-gray-200    { border-color: var(--border-color) !important; }
+  .dark input, .dark textarea, .dark select {
+    background-color: #21262d !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+  }
+}
+
+/* ── Components ──────────────────────────────────────────── */
+@layer components {
+
+  /* ── GoI tricolour stripe (top of every page) ─── */
+  .goi-header-stripe {
+    background: linear-gradient(90deg,
+      #FF6600 0%,   #FF6600 33.3%,
+      #ffffff 33.3%, #ffffff 66.6%,
+      #138808 66.6%, #138808 100%
+    );
+    height: 5px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  /* ── Top header bar (official GoI blue) ─── */
+  .goi-topbar {
+    background-color: var(--bg-header);
+    color: #fff;
+    border-bottom: 3px solid var(--goi-saffron);
+    @apply flex items-center px-4 py-2 gap-3;
+  }
+
+  /* ── Sidebar ─── */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2 text-sm font-medium transition-colors duration-100 cursor-pointer;
+    border-left: 3px solid transparent;
+  }
+  .sidebar-link-active {
+    background-color: var(--bg-sidebar-active);
+    color: var(--text-sidebar-active);
+    border-left-color: #ffcc00;
+  }
+  .sidebar-link-inactive {
+    color: var(--text-sidebar);
+    border-left-color: transparent;
+  }
+  .sidebar-link-inactive:hover {
+    background-color: var(--bg-sidebar-hover);
+    color: #ffffff;
+    border-left-color: rgba(255,255,255,0.3);
+  }
+
+  /* ── Cards — square, structured, no bubble look ─── */
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-top: 3px solid var(--goi-navy);
+    box-shadow: var(--shadow-card);
+    border-radius: 2px;
+  }
+
+  .stat-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-left: 4px solid var(--goi-navy);
+    box-shadow: var(--shadow-card);
+    border-radius: 2px;
+    @apply p-4;
+  }
+
+  /* ── Tables ─── */
+  .gov-table {
+    @apply w-full text-sm;
+    border-collapse: collapse;
+    border: 1px solid var(--border-table);
+  }
+  .gov-table th {
+    background-color: var(--bg-table-head);
+    border: 1px solid var(--border-table);
+    @apply px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide;
+    color: var(--text-secondary);
+  }
+  .gov-table td {
+    border: 1px solid var(--border-table);
+    @apply px-3 py-2;
+    color: var(--text-primary);
+  }
+  .gov-table tr:nth-child(even) td {
+    background-color: var(--bg-table-alt);
+  }
+  .gov-table tr:hover td {
+    background-color: #e8edf5;
+  }
+  .dark .gov-table tr:hover td {
+    background-color: #1c2128;
+  }
+
+  /* ── Buttons ─── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-white text-sm font-semibold transition-colors duration-100;
+    background-color: var(--goi-navy);
+    border: 1px solid var(--goi-navy-dark);
+    border-radius: 2px;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover {
+    background-color: var(--goi-navy-light);
+    text-decoration: none;
+  }
+  .btn-primary:active {
+    background-color: var(--goi-navy-dark);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold transition-colors duration-100;
+    background-color: var(--bg-card);
+    color: var(--goi-navy);
+    border: 1px solid var(--goi-navy);
+    border-radius: 2px;
+  }
+  .btn-secondary:hover {
+    background-color: #e8edf5;
+    text-decoration: none;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition-colors duration-100;
+    background-color: #a3180a;
+    border: 1px solid #7d1208;
+    border-radius: 2px;
+  }
+  .btn-danger:hover { background-color: #7d1208; }
+
+  /* ── Status badges — rectangular, official ─── */
+  .status-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    letter-spacing: 0.03em;
+  }
+  .status-verified    { color: #146c2e; background: #e6f4ec; border-color: #146c2e; }
+  .status-review      { color: #7d4e00; background: #fef3e2; border-color: #b87300; }
+  .status-noncompliant{ color: #a3180a; background: #fde8e6; border-color: #a3180a; }
+  .status-missing     { color: #3d4a5c; background: #f0f2f5; border-color: #8a9aaa; }
+
+  /* ── Section divider ─── */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    @apply my-4;
+  }
+
+  /* ── Typography ─── */
+  .page-title {
+    font-family: 'Noto Serif', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    color: var(--goi-navy);
+  }
+  .dark .page-title { color: #79b8ff; }
+
+  .section-title {
+    @apply text-xs font-semibold uppercase tracking-wider;
+    color: var(--text-secondary);
+  }
+
+  /* ── Notice / alert banner (government notice style) ─── */
+  .gov-notice {
+    border-left: 4px solid var(--goi-saffron);
+    background: #fff8f0;
+    @apply px-4 py-3 text-sm;
+  }
+  .dark .gov-notice {
+    background: #1c1a14;
+    border-left-color: var(--goi-saffron);
+  }
+  .gov-notice-blue {
+    border-left: 4px solid var(--goi-navy);
+    background: #f0f4ff;
+    @apply px-4 py-3 text-sm;
+  }
+  .dark .gov-notice-blue {
+    background: #0d1526;
+  }
+
+  /* ── Data field (label + value pair) ─── */
+  .data-label {
+    @apply text-xs font-semibold uppercase tracking-wide;
+    color: var(--text-muted);
+  }
+  .data-value {
+    @apply text-sm font-semibold mt-0.5;
+    color: var(--text-primary);
+  }
+
+  /* ── Breadcrumb ─── */
+  .breadcrumb {
+    @apply flex items-center gap-1 text-xs;
+    color: var(--text-muted);
+  }
+  .breadcrumb a, .breadcrumb span {
+    @apply hover:underline cursor-pointer;
+    color: var(--text-link);
+  }
+  .breadcrumb .current {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  /* ── Score ring number ─── */
+  .score-value {
+    font-family: 'Noto Serif', Georgia, serif;
+    font-weight: 700;
+  }
+}
+
+/* ── Custom scrollbar ────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-page); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Progress bars ───────────────────────────────────────── */
+.progress-bar { transition: width 0.6s ease-in-out; }
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes slideOutRight {
+  from { transform: translateX(0);    opacity: 1; }
+  to   { transform: translateX(100%); opacity: 0; }
+}
+.toast-enter { animation: slideInRight 0.25s ease forwards; }
+.toast-exit  { animation: slideOutRight 0.25s ease forwards; }
+
+/* ── Print styles ────────────────────────────────────────── */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; font-size: 11px; }
+  .card { border: 1px solid #999; box-shadow: none; }
+}

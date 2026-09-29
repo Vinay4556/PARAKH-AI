@@ -1,0 +1,43 @@
+[
+  {
+    "id": "INS-001",
+    "contract_id": "CON-2026-001",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-003",
+    "milestone_id": "MLS-004",
+    "inspection_type": "INCOMING_QUALITY",
+    "inspector": "Quality Officer",
+    "inspector_id": "USR-005",
+    "inspected_at": "2026-10-28T10:00:00",
+    "status": "COMPLETED_WITH_ISSUES",
+    "items": [
+      {
+        "item": "IoT Gateway Unit (IE-IMS-500)",
+        "quantity_expected": 40,
+        "quantity_received": 40,
+        "quantity_accepted": 38,
+        "quantity_rejected": 2,
+        "rejection_reason": "2 units failed power-on test. Suspected manufacturing defect.",
+        "specification_check": "PASS",
+        "visual_check": "PASS",
+        "functional_check": "PARTIAL_FAIL"
+      },
+      {
+        "item": "Sensor Probes (Type B)",
+        "quantity_expected": 200,
+        "quantity_received": 200,
+        "quantity_accepted": 200,
+        "quantity_rejected": 0,
+        "rejection_reason": null,
+        "specification_check": "PASS",
+        "visual_check": "PASS",
+        "functional_check": "PASS"
+      }
+    ],
+    "overall_result": "CONDITIONAL_ACCEPT",
+    "corrective_action_required": true,
+    "corrective_action_id": "CA-001",
+    "report_notes": "Batch 1 accepted conditionally. 2 defective IoT gateway units to be replaced. Replacement required within 15 days.",
+    "attachments": []
+  }
+]

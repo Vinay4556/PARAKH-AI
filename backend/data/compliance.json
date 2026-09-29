@@ -1,0 +1,671 @@
+{
+  "BID-003": {
+    "results": {
+      "REQ-001": {
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "source_doc": "DOC-003-01",
+        "extracted_value": "GSTIN 29AABCN9012D1Z8 is valid and active.",
+        "required_value": "Valid GSTIN",
+        "found_value": "29AABCN9012D1Z8 (Active)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-002": {
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "source_doc": "DOC-003-02",
+        "extracted_value": "PAN AABCN9012D confirmed for Nova Engineering Solutions Pvt Ltd.",
+        "required_value": "Valid PAN",
+        "found_value": "AABCN9012D",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-003": {
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "source_doc": "DOC-003-03",
+        "extracted_value": "Udyam Registration UDYAM-KA-08-0091234. Category: Medium Enterprise.",
+        "required_value": "Udyam Certificate (Optional)",
+        "found_value": "UDYAM-KA-08-0091234",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-004": {
+        "status": "VERIFIED",
+        "confidence": 0.96,
+        "source_doc": "DOC-003-06",
+        "extracted_value": "Average Annual Turnover: ₹18.77 Crore. Substantially above ₹10 Crore threshold.",
+        "required_value": "₹10 Crore",
+        "found_value": "₹18.77 Crore",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-005": {
+        "status": "VERIFIED",
+        "confidence": 0.95,
+        "source_doc": "DOC-003-10",
+        "extracted_value": "12 years of IoT experience. 4 government projects completed. First project: 2012.",
+        "required_value": "5 years",
+        "found_value": "12 years",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-006": {
+        "status": "REVIEW",
+        "confidence": 0.78,
+        "source_doc": "DOC-003-04",
+        "extracted_value": "ISO 9001:2015 certificate found. Certificate entity: 'Nova Engineering Solutions Private Limited' vs GST: 'Nova Engineering Solutions Pvt Ltd'.",
+        "required_value": "Valid ISO 9001:2015",
+        "found_value": "ISO 9001 (minor name variation)",
+        "reason": "",
+        "concern": "The ISO 9001 certificate uses the full legal form 'Private Limited' while other documents use 'Pvt Ltd'. This is a minor name variation. The certificate expiry (09-Feb-2027) is valid."
+      },
+      "REQ-007": {
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "source_doc": "DOC-003-08",
+        "extracted_value": "EPFO registration KA/BAN/45678 confirmed. Status: Active. 142 employees covered.",
+        "required_value": "Active EPFO Registration",
+        "found_value": "KA/BAN/45678 (Active)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-008": {
+        "status": "VERIFIED",
+        "confidence": 0.96,
+        "source_doc": "DOC-003-09",
+        "extracted_value": "ESIC registration 53000234567 confirmed. Status: Active.",
+        "required_value": "Active ESIC Registration",
+        "found_value": "53000234567 (Active)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-009": {
+        "status": "VERIFIED",
+        "confidence": 0.93,
+        "source_doc": "DOC-003-07",
+        "extracted_value": "OEM Authorization from SenseNet Technologies B.V. Valid until 14-Mar-2027.",
+        "required_value": "Valid OEM Authorization",
+        "found_value": "SenseNet Auth (Valid to Mar-2027)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-010": {
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "source_doc": "DOC-003-11",
+        "extracted_value": "Make in India declaration submitted. Local Content: 68%. Qualifies as Class I Local Supplier.",
+        "required_value": "Make in India Declaration",
+        "found_value": "68% Local Content (Class I)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-011": {
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "source_doc": "DOC-003-11",
+        "extracted_value": "Non-Blacklisting declaration submitted. Status: Not Blacklisted.",
+        "required_value": "Non-Blacklisting Declaration",
+        "found_value": "Not Blacklisted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-012": {
+        "status": "VERIFIED",
+        "confidence": 0.95,
+        "source_doc": "DOC-003-10",
+        "extracted_value": "4 IoT projects above ₹1 Crore: ISRO (₹5.2Cr), DRDO (₹3.8Cr), KPCL (₹2.6Cr), Wipro (₹1.9Cr).",
+        "required_value": "3 projects ≥ ₹1 Crore",
+        "found_value": "4 qualifying projects",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-013": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Bank Solvency Certificate",
+        "found_value": "Not submitted",
+        "reason": "No bank solvency certificate was found among the submitted documents.",
+        "concern": ""
+      },
+      "REQ-014": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "BIS/CE Certificate",
+        "found_value": "Not submitted",
+        "reason": "No BIS or CE certificate for the equipment was submitted.",
+        "concern": ""
+      },
+      "REQ-015": {
+        "status": "VERIFIED",
+        "confidence": 0.95,
+        "source_doc": "DOC-003-05",
+        "extracted_value": "ISO 27001:2013 certificate present. Valid until 30-Jun-2026.",
+        "required_value": "ISO 27001 (Optional)",
+        "found_value": "ISO 27001 (Valid to Jun-2026)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-016": {
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "source_doc": "DOC-003-08",
+        "extracted_value": "142 employees under EPFO coverage. Adequate technical manpower confirmed.",
+        "required_value": "20 technical personnel",
+        "found_value": "142 EPFO employees",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-017": {
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "source_doc": "DOC-003-01",
+        "extracted_value": "GST registration confirms Karnataka, India registered office.",
+        "required_value": "Registered office in India",
+        "found_value": "Bangalore, Karnataka",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-018": {
+        "status": "VERIFIED",
+        "confidence": 0.93,
+        "source_doc": "DOC-003-10",
+        "extracted_value": "ISRO and DRDO project completions include 2+ year AMC obligations.",
+        "required_value": "AMC Capability (Optional)",
+        "found_value": "AMC references found",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-019": {
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "source_doc": "DOC-003-11",
+        "extracted_value": "Bank Guarantee KNB-BG-2026-00456 for ₹24,00,000 submitted.",
+        "required_value": "EMD ₹24 Lakhs",
+        "found_value": "BG ₹24,00,000 (Submitted)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-020": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "NABL Testing Report (Optional)",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      }
+    },
+    "score": {
+      "overall_score": 84,
+      "category_scores": {
+        "Legal": 100,
+        "Financial": 67,
+        "Technical": 81,
+        "Certifications": 50
+      },
+      "status_counts": {
+        "VERIFIED": 16,
+        "REVIEW": 1,
+        "NON_COMPLIANT": 0,
+        "MISSING": 3
+      },
+      "risk_level": "MEDIUM",
+      "total_requirements": 20
+    },
+    "analyzed_at": "2026-08-29T12:29:09.465153",
+    "tender_id": "GEM-DEMO-2026-001"
+  },
+  "BID-001": {
+    "results": {
+      "REQ-001": {
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "source_doc": "DOC-001-01",
+        "extracted_value": "GSTIN 27AABCA1234B1Z5 is valid and active.",
+        "required_value": "Valid GSTIN",
+        "found_value": "27AABCA1234B1Z5 (Active)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-002": {
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "source_doc": "DOC-001-02",
+        "extracted_value": "PAN AABCA1234B confirmed for ABC Technologies Pvt Ltd.",
+        "required_value": "Valid PAN",
+        "found_value": "AABCA1234B",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-003": {
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "source_doc": "DOC-001-03",
+        "extracted_value": "Udyam Registration UDYAM-MH-12-0034567 present. Category: Small Enterprise.",
+        "required_value": "Udyam Certificate (Optional)",
+        "found_value": "UDYAM-MH-12-0034567",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-004": {
+        "status": "VERIFIED",
+        "confidence": 0.96,
+        "source_doc": "DOC-001-05",
+        "extracted_value": "Average Annual Turnover: ₹14.80 Crore (FY2022-FY2024). Exceeds mandatory threshold of ₹10 Crore.",
+        "required_value": "₹10 Crore",
+        "found_value": "₹14.80 Crore",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-005": {
+        "status": "VERIFIED",
+        "confidence": 0.93,
+        "source_doc": "DOC-001-09",
+        "extracted_value": "11 years of IoT experience documented. 3 completed projects with government clients.",
+        "required_value": "5 years",
+        "found_value": "11 years",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-006": {
+        "status": "REVIEW",
+        "confidence": 0.72,
+        "source_doc": "DOC-001-04",
+        "extracted_value": "ISO 9001:2015 certificate found. However, expiry date is 14-Jan-2025 which may have lapsed.",
+        "required_value": "Valid ISO 9001:2015",
+        "found_value": "ISO 9001 (Expiry: 14-Jan-2025)",
+        "reason": "",
+        "concern": "The ISO 9001:2015 certificate expiry date (14-Jan-2025) appears to be in the past relative to the tender submission date. A renewed certificate should be requested."
+      },
+      "REQ-007": {
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "source_doc": "DOC-001-07",
+        "extracted_value": "EPFO registration MH/BAN/12345 confirmed. Status: Active. 85 employees covered.",
+        "required_value": "Active EPFO Registration",
+        "found_value": "MH/BAN/12345 (Active)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-008": {
+        "status": "REVIEW",
+        "confidence": 0.85,
+        "source_doc": "DOC-001-08",
+        "extracted_value": "ESIC registration found but entity name on document reads 'ABC Tech Pvt Ltd' vs GST name 'ABC Technologies Pvt Ltd'. Minor name discrepancy detected.",
+        "required_value": "Active ESIC Registration",
+        "found_value": "ESIC 31000123456 (name mismatch)",
+        "reason": "",
+        "concern": "The entity name on the ESIC document ('ABC Tech Pvt Ltd') differs from the registered legal name on GST ('ABC Technologies Pvt Ltd'). Manual verification required."
+      },
+      "REQ-009": {
+        "status": "REVIEW",
+        "confidence": 0.89,
+        "source_doc": "DOC-001-06",
+        "extracted_value": "OEM Authorization found. However, authorized entity name is 'ABC Technology Solutions Pvt Ltd' vs bidder name 'ABC Technologies Pvt Ltd'.",
+        "required_value": "Valid OEM Authorization",
+        "found_value": "OEM Auth (entity mismatch)",
+        "reason": "",
+        "concern": "The OEM Authorization letter identifies the authorized partner as 'ABC Technology Solutions Pvt Ltd', while the bidder's legal name is 'ABC Technologies Pvt Ltd'. This name variation requires manual clarification."
+      },
+      "REQ-010": {
+        "status": "VERIFIED",
+        "confidence": 0.96,
+        "source_doc": "DOC-001-10",
+        "extracted_value": "Make in India declaration submitted. Local Content: 55%. Qualifies as Class II Local Supplier.",
+        "required_value": "Make in India Declaration",
+        "found_value": "55% Local Content (Class II)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-011": {
+        "status": "VERIFIED",
+        "confidence": 0.96,
+        "source_doc": "DOC-001-10",
+        "extracted_value": "Non-Blacklisting declaration submitted and signed. Status confirmed: NOT BLACKLISTED.",
+        "required_value": "Non-Blacklisting Declaration",
+        "found_value": "Not Blacklisted (Declared)",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-012": {
+        "status": "VERIFIED",
+        "confidence": 0.93,
+        "source_doc": "DOC-001-09",
+        "extracted_value": "3 completed IoT/industrial projects above ₹1 Crore each found: MIDHANI (₹2.1Cr), BHEL (₹1.8Cr), HAL (₹3.2Cr).",
+        "required_value": "3 completed projects ≥ ₹1 Crore",
+        "found_value": "3 projects found",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-013": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Bank Solvency Certificate",
+        "found_value": "Not submitted",
+        "reason": "No bank solvency certificate was found among the uploaded documents.",
+        "concern": ""
+      },
+      "REQ-014": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "BIS/CE Certificate",
+        "found_value": "Not submitted",
+        "reason": "No BIS or CE certification for the equipment was found in the document set.",
+        "concern": ""
+      },
+      "REQ-015": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "ISO 27001 (Optional)",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-016": {
+        "status": "VERIFIED",
+        "confidence": 0.91,
+        "source_doc": "DOC-001-09",
+        "extracted_value": "85 employees covered under EPFO, indicating adequate technical manpower. Experience document lists qualified IoT engineers.",
+        "required_value": "20 technical personnel",
+        "found_value": "85 EPFO employees",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-017": {
+        "status": "VERIFIED",
+        "confidence": 0.95,
+        "source_doc": "DOC-001-01",
+        "extracted_value": "GST registration confirms registered office in Maharashtra, India. Incorporation year 2009.",
+        "required_value": "Registered office in India",
+        "found_value": "Mumbai, Maharashtra",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-018": {
+        "status": "VERIFIED",
+        "confidence": 0.9,
+        "source_doc": "DOC-001-09",
+        "extracted_value": "Experience documents reference post-delivery support for 2+ years on MIDHANI project.",
+        "required_value": "AMC Capability (Optional)",
+        "found_value": "AMC references found",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-019": {
+        "status": "VERIFIED",
+        "confidence": 0.94,
+        "source_doc": "DOC-001-10",
+        "extracted_value": "EMD/Bank Guarantee included in declarations document. Integrity pact signed.",
+        "required_value": "EMD ₹24 Lakhs",
+        "found_value": "EMD/BG submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-020": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "NABL Testing Report (Optional)",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      }
+    },
+    "score": {
+      "overall_score": 76,
+      "category_scores": {
+        "Legal": 93,
+        "Financial": 67,
+        "Technical": 72,
+        "Certifications": 28
+      },
+      "status_counts": {
+        "VERIFIED": 13,
+        "REVIEW": 3,
+        "NON_COMPLIANT": 0,
+        "MISSING": 4
+      },
+      "risk_level": "MEDIUM",
+      "total_requirements": 20
+    },
+    "analyzed_at": "2026-09-28T20:21:21.308682",
+    "tender_id": "GEM-DEMO-2026-001"
+  },
+  "BID-004": {
+    "results": {
+      "REQ-001": {
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "source_doc": "DOC-UPLOAD-E109C353",
+        "extracted_value": "Uploaded: WhatsApp Image 2026-09-17 at 1.04.15 PM.jpeg. GSTIN: 29AAATK2644N7Z2. | Gov API: ACTIVE (gstinapi.in (GSP Network — live))",
+        "required_value": "GST Certificate",
+        "found_value": "GST submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-002": {
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "source_doc": "DOC-UPLOAD-FECFA238",
+        "extracted_value": "Uploaded: WhatsApp Image 2026-09-11 at 11.18.57 AM.jpeg. PAN: IEPPB9985C. | Gov API: FORMAT_VALID (PAN Offline (sandbox.co.in KYC subscription needed))",
+        "required_value": "PAN Card",
+        "found_value": "PAN submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-003": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Udyam Certificate",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-004": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Audited Financial Statements, CA Certificate",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-005": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Experience Certificates, Work Orders, Completion Certificates",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-006": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "ISO 9001 Certificate",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-007": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "EPFO Registration Certificate",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-008": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "ESIC Registration Certificate",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-009": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "OEM Authorization Letter",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-010": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Make in India Declaration, Self-Certification",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-011": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Non-Blacklisting Affidavit",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-012": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Work Order Copies, Completion Certificates",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-013": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "Bank Solvency Certificate",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-014": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "BIS Certificate, CE Certificate",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-015": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "ISO 27001 Certificate",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-016": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "HR Certificate, Employee List, Qualification Proof",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-017": {
+        "status": "VERIFIED",
+        "confidence": 0.93,
+        "source_doc": "DOC-UPLOAD-6C90430A",
+        "extracted_value": "Uploaded: WhatsApp Image 2026-09-17 at 1.25.20 PM.jpeg. WhatsApp Image 2026-09-17 at 1.25.20 PM.jpeg.",
+        "required_value": "Certificate of Incorporation, MOA/AOA",
+        "found_value": "INCORPORATION submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-018": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "AMC Agreements, Client References",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-019": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "EMD / Bank Guarantee",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      },
+      "REQ-020": {
+        "status": "MISSING",
+        "confidence": 0.0,
+        "source_doc": null,
+        "extracted_value": null,
+        "required_value": "NABL Testing Report",
+        "found_value": "Not submitted",
+        "reason": "",
+        "concern": ""
+      }
+    },
+    "score": {
+      "overall_score": 17,
+      "category_scores": {
+        "Legal": 41,
+        "Financial": 0,
+        "Technical": 0,
+        "Certifications": 0
+      },
+      "status_counts": {
+        "VERIFIED": 3,
+        "REVIEW": 0,
+        "NON_COMPLIANT": 0,
+        "MISSING": 17
+      },
+      "risk_level": "HIGH",
+      "total_requirements": 20
+    },
+    "analyzed_at": "2026-09-22T21:38:21.793295",
+    "tender_id": "GEM-DEMO-2026-001"
+  }
+}

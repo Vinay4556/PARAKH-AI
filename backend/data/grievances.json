@@ -1,0 +1,25 @@
+[
+  {
+    "id": "GRV-DEMO01",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bid_id": "BID-SUB-001",
+    "bidder_id": "BID-001",
+    "submitter_id": "BID-001",
+    "submitter_name": "ABC Technologies Pvt Ltd",
+    "submitter_role": "BIDDER",
+    "category": "TECHNICAL_OBJECTION",
+    "subject": "ISO 9001 Expiry Date Interpretation",
+    "description": "The tender requires ISO 9001:2015 but the compliance engine has flagged our certificate as potentially lapsed. We request clarification on whether a renewal application submitted before the expiry date is acceptable pending re-issue.",
+    "supporting_documents": [],
+    "priority": "MEDIUM",
+    "status": "UNDER_REVIEW",
+    "submitted_at": "2026-08-25T09:30:00",
+    "assigned_to": "Rajesh Kumar",
+    "officer_response": null,
+    "response_at": null,
+    "closed_at": null,
+    "escalated_at": null,
+    "public_note": null,
+    "internal_notes": []
+  }
+]

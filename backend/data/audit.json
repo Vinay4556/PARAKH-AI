@@ -1,0 +1,312 @@
+[
+  {
+    "id": "AUD-001",
+    "timestamp": "2026-08-20T10:28:00",
+    "actor": "System",
+    "action": "Tender Created",
+    "detail": "Tender GEM-DEMO-2026-001 uploaded and registered",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": null,
+    "severity": "info"
+  },
+  {
+    "id": "AUD-002",
+    "timestamp": "2026-08-20T10:29:00",
+    "actor": "AI Engine",
+    "action": "Requirements Extracted",
+    "detail": "20 requirements extracted from tender document GEM-DEMO-2026-001",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": null,
+    "severity": "info"
+  },
+  {
+    "id": "AUD-003",
+    "timestamp": "2026-08-20T10:31:00",
+    "actor": "Officer",
+    "action": "Bidder Documents Uploaded",
+    "detail": "10 documents uploaded for ABC Technologies Pvt Ltd",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "info"
+  },
+  {
+    "id": "AUD-004",
+    "timestamp": "2026-08-20T10:32:00",
+    "actor": "AI Engine",
+    "action": "Document Classification Completed",
+    "detail": "All 10 documents classified with high confidence for ABC Technologies",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "info"
+  },
+  {
+    "id": "AUD-005",
+    "timestamp": "2026-08-20T10:35:00",
+    "actor": "AI Engine",
+    "action": "Text Extraction Completed",
+    "detail": "Text extracted from 10/10 documents. 0 documents required OCR.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "info"
+  },
+  {
+    "id": "AUD-006",
+    "timestamp": "2026-08-20T10:40:00",
+    "actor": "AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Compliance analysis completed for ABC Technologies. Score: 87%. Risk: MEDIUM.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "warning"
+  },
+  {
+    "id": "AUD-007",
+    "timestamp": "2026-08-20T10:42:00",
+    "actor": "AI Engine",
+    "action": "Cross-Document Inconsistency Detected",
+    "detail": "Name mismatch between GST and OEM Authorization for ABC Technologies Pvt Ltd",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "warning"
+  },
+  {
+    "id": "AUD-008",
+    "timestamp": "2026-08-21T14:16:00",
+    "actor": "Officer",
+    "action": "Bidder Documents Uploaded",
+    "detail": "6 documents uploaded for Bharat Industrial Systems Pvt Ltd",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-002",
+    "severity": "info"
+  },
+  {
+    "id": "AUD-009",
+    "timestamp": "2026-08-21T14:30:00",
+    "actor": "AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Compliance analysis completed for Bharat Industrial. Score: 61%. Risk: HIGH.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-002",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-010",
+    "timestamp": "2026-08-21T14:32:00",
+    "actor": "AI Engine",
+    "action": "Critical Issue Detected",
+    "detail": "Bharat Industrial - Financial turnover ₹6.2 Crore is below mandatory threshold of ₹10 Crore",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-002",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-011",
+    "timestamp": "2026-08-22T09:01:00",
+    "actor": "Officer",
+    "action": "Bidder Documents Uploaded",
+    "detail": "11 documents uploaded for Nova Engineering Solutions Pvt Ltd",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-003",
+    "severity": "info"
+  },
+  {
+    "id": "AUD-012",
+    "timestamp": "2026-08-22T09:20:00",
+    "actor": "AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Compliance analysis completed for Nova Engineering. Score: 91%. Risk: LOW.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-003",
+    "severity": "info"
+  },
+  {
+    "id": "AUD-013",
+    "timestamp": "2026-08-22T09:22:00",
+    "actor": "AI Engine",
+    "action": "Document Inconsistency Flagged",
+    "detail": "Nova Engineering - ISO 9001 certificate entity name variation detected (minor)",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-003",
+    "severity": "warning"
+  },
+  {
+    "id": "AUD-014",
+    "timestamp": "2026-08-26T10:00:00",
+    "actor": "Officer",
+    "action": "Report Generated",
+    "detail": "Final compliance report generated for GEM-DEMO-2026-001",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": null,
+    "severity": "info"
+  },
+  {
+    "id": "AUD-0015",
+    "timestamp": "2026-08-28T22:38:17.051675",
+    "actor": "Rajesh Kumar",
+    "action": "Tender Created",
+    "detail": "New tender 'Test Tender from PARAKH AI' created with ID TND-2026-109BB1.",
+    "tender_id": "TND-2026-109BB1",
+    "bidder_id": null,
+    "severity": "info"
+  },
+  {
+    "id": "AUD-0018",
+    "timestamp": "2026-08-29T12:29:09.501539",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder Nova Engineering Solutions Pvt Ltd scored 84% with MEDIUM risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-003",
+    "severity": "warning"
+  },
+  {
+    "id": "AUD-0019",
+    "timestamp": "2026-09-02T22:34:16.598886",
+    "actor": "Rajesh Kumar",
+    "action": "Milestone Updated",
+    "detail": "Milestone MLS-005 updated on contract CON-2026-001",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-003",
+    "severity": "info"
+  },
+  {
+    "id": "AUD-0020",
+    "timestamp": "2026-09-04T23:31:49.233779",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder ABC Technologies Pvt Ltd scored 76% with MEDIUM risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "warning"
+  },
+  {
+    "id": "AUD-0021",
+    "timestamp": "2026-09-04T23:32:53.753983",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder ABC Technologies Pvt Ltd scored 76% with MEDIUM risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "warning"
+  },
+  {
+    "id": "AUD-0022",
+    "timestamp": "2026-09-04T23:33:10.194791",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder ABC Technologies Pvt Ltd scored 76% with MEDIUM risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "warning"
+  },
+  {
+    "id": "AUD-0023",
+    "timestamp": "2026-09-06T21:11:05.201741",
+    "actor": "Procurement Officer",
+    "action": "Financial Bids Opened",
+    "detail": "Officer opened financial bids for tender GEM-DEMO-2026-001. 3 bid(s) unsealed. Two-envelope opening ceremony completed.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": null,
+    "severity": "info"
+  },
+  {
+    "id": "AUD-0029",
+    "timestamp": "2026-09-15T16:27:34.625761",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder Test Bidder Pvt Ltd scored 3% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0030",
+    "timestamp": "2026-09-16T22:22:43.481168",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder Test Bidder Pvt Ltd scored 3% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0024",
+    "timestamp": "2026-09-17T11:52:14.101271",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder None scored 6% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0025",
+    "timestamp": "2026-09-17T13:05:56.117307",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder None scored 11% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0026",
+    "timestamp": "2026-09-17T13:20:58.728807",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder None scored 17% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0027",
+    "timestamp": "2026-09-17T13:22:31.356321",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder None scored 11% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0028",
+    "timestamp": "2026-09-17T13:28:17.977609",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder None scored 17% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0031",
+    "timestamp": "2026-09-22T21:22:08.506944",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder None scored 17% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0032",
+    "timestamp": "2026-09-22T21:38:21.803371",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder None scored 17% with HIGH risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "severity": "error"
+  },
+  {
+    "id": "AUD-0033",
+    "timestamp": "2026-09-28T20:21:21.332002",
+    "actor": "PARAKH AI Engine",
+    "action": "Compliance Analysis Completed",
+    "detail": "Bidder ABC Technologies Pvt Ltd scored 76% with MEDIUM risk.",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "severity": "warning"
+  }
+]

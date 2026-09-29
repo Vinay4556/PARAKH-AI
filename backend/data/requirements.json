@@ -1,0 +1,294 @@
+[
+  {
+    "id": "REQ-001",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "GST Registration",
+    "category": "Legal",
+    "mandatory": true,
+    "description": "Bidder must have a valid GST registration certificate (GSTIN) issued by the Government of India.",
+    "required_evidence": [
+      "GST Certificate"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-002",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "PAN Card",
+    "category": "Legal",
+    "mandatory": true,
+    "description": "Bidder must have a valid Permanent Account Number (PAN) issued by Income Tax Department.",
+    "required_evidence": [
+      "PAN Card"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-003",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Udyam / MSME Registration",
+    "category": "Legal",
+    "mandatory": false,
+    "description": "Preference given to bidders with valid Udyam Registration Certificate (MSME). Provides eligibility for MSME benefits.",
+    "required_evidence": [
+      "Udyam Certificate"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-004",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Minimum Average Annual Turnover",
+    "category": "Financial",
+    "mandatory": true,
+    "description": "Bidder must demonstrate an average annual turnover of at least ₹10 Crore over the last 3 financial years.",
+    "required_evidence": [
+      "Audited Financial Statements",
+      "CA Certificate"
+    ],
+    "verification_type": "numeric_threshold",
+    "threshold": 100000000,
+    "threshold_display": "₹10 Crore",
+    "unit": "INR"
+  },
+  {
+    "id": "REQ-005",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Minimum Relevant Experience",
+    "category": "Technical",
+    "mandatory": true,
+    "description": "Bidder must have at least 5 years of relevant experience in supply and installation of IoT or industrial automation equipment.",
+    "required_evidence": [
+      "Experience Certificates",
+      "Work Orders",
+      "Completion Certificates"
+    ],
+    "verification_type": "experience_years",
+    "threshold": 5,
+    "unit": "years"
+  },
+  {
+    "id": "REQ-006",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "ISO 9001:2015 Certification",
+    "category": "Certifications",
+    "mandatory": true,
+    "description": "Bidder must hold a valid ISO 9001:2015 Quality Management System certification from an accredited certification body.",
+    "required_evidence": [
+      "ISO 9001 Certificate"
+    ],
+    "verification_type": "certificate_validity",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-007",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "EPFO Registration",
+    "category": "Legal",
+    "mandatory": true,
+    "description": "Bidder must be registered with Employees' Provident Fund Organisation (EPFO) as per EPF and MP Act, 1952.",
+    "required_evidence": [
+      "EPFO Registration Certificate"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-008",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "ESIC Registration",
+    "category": "Legal",
+    "mandatory": true,
+    "description": "Bidder must be registered with Employees' State Insurance Corporation (ESIC) as per ESI Act, 1948.",
+    "required_evidence": [
+      "ESIC Registration Certificate"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-009",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "OEM Authorization",
+    "category": "Technical",
+    "mandatory": true,
+    "description": "Bidder must provide valid OEM authorization letter from the original equipment manufacturer for the IoT monitoring equipment being supplied.",
+    "required_evidence": [
+      "OEM Authorization Letter"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-010",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Make in India Declaration",
+    "category": "Legal",
+    "mandatory": true,
+    "description": "Bidder must submit a declaration confirming that the equipment meets Make in India guidelines as per Public Procurement (Preference to Make in India) Order 2017.",
+    "required_evidence": [
+      "Make in India Declaration",
+      "Self-Certification"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-011",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Non-Blacklisting Declaration",
+    "category": "Legal",
+    "mandatory": true,
+    "description": "Bidder must submit a self-declaration that it has not been blacklisted or debarred by any Central/State Government or PSU.",
+    "required_evidence": [
+      "Non-Blacklisting Affidavit"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-012",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Minimum Completed Similar Projects",
+    "category": "Technical",
+    "mandatory": true,
+    "description": "Bidder must have completed at least 3 similar projects (IoT/industrial automation) of value ≥ ₹1 Crore each in the last 5 years.",
+    "required_evidence": [
+      "Work Order Copies",
+      "Completion Certificates"
+    ],
+    "verification_type": "project_count",
+    "threshold": 3,
+    "unit": "projects"
+  },
+  {
+    "id": "REQ-013",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Solvency Certificate",
+    "category": "Financial",
+    "mandatory": true,
+    "description": "Bidder must provide a Solvency Certificate from a scheduled bank certifying that the company is financially solvent.",
+    "required_evidence": [
+      "Bank Solvency Certificate"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-014",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "BIS / CE Certification for Equipment",
+    "category": "Technical",
+    "mandatory": true,
+    "description": "The IoT monitoring equipment must carry BIS (Bureau of Indian Standards) or CE marking certification for electrical safety compliance.",
+    "required_evidence": [
+      "BIS Certificate",
+      "CE Certificate"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-015",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "IT Security Compliance (ISO 27001)",
+    "category": "Certifications",
+    "mandatory": false,
+    "description": "Preferred: Bidder or their IoT platform should have ISO 27001 Information Security Management certification.",
+    "required_evidence": [
+      "ISO 27001 Certificate"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-016",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Technical Manpower",
+    "category": "Technical",
+    "mandatory": true,
+    "description": "Bidder must have at least 20 qualified technical personnel with relevant experience in IoT system installation and maintenance.",
+    "required_evidence": [
+      "HR Certificate",
+      "Employee List",
+      "Qualification Proof"
+    ],
+    "verification_type": "numeric_threshold",
+    "threshold": 20,
+    "threshold_display": "20 personnel",
+    "unit": "persons"
+  },
+  {
+    "id": "REQ-017",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Registered Office in India",
+    "category": "Legal",
+    "mandatory": true,
+    "description": "Bidder must have a registered office address in India with valid incorporation certificate.",
+    "required_evidence": [
+      "Certificate of Incorporation",
+      "MOA/AOA"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-018",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Annual Maintenance Contract Capability",
+    "category": "Technical",
+    "mandatory": false,
+    "description": "Bidder should have demonstrated AMC/support capability with previous clients for at least 2 years post-delivery.",
+    "required_evidence": [
+      "AMC Agreements",
+      "Client References"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-019",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "Bid Security (EMD)",
+    "category": "Financial",
+    "mandatory": true,
+    "description": "Bidder must submit Earnest Money Deposit (EMD) of ₹24 Lakhs (0.5% of estimated value) via DD or Bank Guarantee.",
+    "required_evidence": [
+      "EMD / Bank Guarantee"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  },
+  {
+    "id": "REQ-020",
+    "tender_id": "GEM-DEMO-2026-001",
+    "title": "NABL Accredited Testing Report",
+    "category": "Certifications",
+    "mandatory": false,
+    "description": "Equipment performance testing report from NABL accredited laboratory is preferred for additional technical compliance.",
+    "required_evidence": [
+      "NABL Testing Report"
+    ],
+    "verification_type": "document_presence",
+    "threshold": null,
+    "unit": null
+  }
+]

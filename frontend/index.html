@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title & Meta -->
+    <title>PARAKH AI — GeM Bid Compliance Intelligence | Government of India</title>
+    <meta name="description" content="AI-Powered Integrated Bid Compliance Verification Platform for Government e-Marketplace Procurement — Smart India Hackathon 2026" />
+    <meta name="author" content="Team Aevora — Smart India Hackathon 2026" />
+
+    <!-- GoI favicon: Ashoka Chakra -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23003380'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23FF6600' stroke-width='4'/><circle cx='50' cy='50' r='5' fill='%23FF6600'/></svg>" />
+
+    <!-- Noto Serif + Noto Sans + Noto Sans Kannada — official GoI typography -->
+    <!-- Load asynchronously so fonts never block first paint.
+         display=swap ensures text is visible immediately with a system font fallback. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
+
+    <!-- GoI theme colour -->
+    <meta name="theme-color" content="#003380" />
+
+    <!-- Prevent flash of unstyled dark mode -->
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('parakh_theme') || 'light';
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch(e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "USR-001",
+    "email": "officer@demo.gov",
+    "password": "password",
+    "name": "Rajesh Kumar",
+    "role": "OFFICER",
+    "department": "Government Industrial Procurement Division",
+    "employee_id": "EMP-2024-0045",
+    "last_login": "2026-09-29T09:30:09.403615",
+    "active": true
+  },
+  {
+    "id": "USR-002",
+    "email": "bidder@demo.com",
+    "password": "password",
+    "name": "Arjun Mehta",
+    "role": "BIDDER",
+    "organization_id": "BID-001",
+    "organization_name": "ABC Technologies Pvt Ltd",
+    "last_login": "2026-09-15T10:51:46.662877",
+    "active": true
+  },
+  {
+    "id": "USR-003",
+    "email": "citizen@demo.com",
+    "password": "password",
+    "name": "Priya Sharma",
+    "role": "STAKEHOLDER",
+    "department": null,
+    "last_login": "2026-09-23T10:41:26.983888",
+    "active": true
+  },
+  {
+    "id": "USR-004",
+    "email": "bidder2@demo.com",
+    "password": "password",
+    "name": "Rakesh Gupta",
+    "role": "BIDDER",
+    "organization_id": "BID-002",
+    "organization_name": "Bharat Industrial Systems Pvt Ltd",
+    "last_login": "2026-08-24T10:00:00",
+    "active": true
+  }
+]

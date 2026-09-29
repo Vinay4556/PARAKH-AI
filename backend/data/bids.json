@@ -1,0 +1,323 @@
+[
+  {
+    "id": "BID-SUB-001",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-001",
+    "bidder_name": "ABC Technologies Pvt Ltd",
+    "status": "COMPLIANCE_REVIEW",
+    "submitted_at": "2026-08-20T10:30:00",
+    "last_updated": "2026-08-20T10:45:00",
+    "compliance_score": 87,
+    "risk_level": "MEDIUM",
+    "technical_status": "PENDING",
+    "financial_status": "PENDING",
+    "clarifications": 1,
+    "documents_count": 10,
+    "quoted_price": 11800000,
+    "price_display": "₹1.18 Cr",
+    "price_breakdown": {
+      "base_price": "10000000",
+      "gst_rate": "18",
+      "gst_amount": "1800000",
+      "installation_charges": "0",
+      "amc_charges_annual": "500000",
+      "total_with_gst": "11800000"
+    },
+    "delivery_period_days": 90,
+    "payment_terms": "30 days post acceptance",
+    "validity_period_days": 120,
+    "validity_expires_at": "2026-12-28",
+    "emd_reference": "BG/SBI/2026/001234",
+    "emd_bank": "State Bank of India",
+    "emd_amount": 2400000,
+    "financial_remarks": "",
+    "financial_bid_opened": true,
+    "technical_score": 82,
+    "committee_scores": [
+      80,
+      83,
+      82
+    ],
+    "committee_evaluators": 3,
+    "emd_status": "VERIFIED",
+    "emd_verification": {
+      "status": "VERIFIED",
+      "required_amount": 2400000,
+      "submitted_amount": 2400000,
+      "reference": "BG/SBI/2026/001234",
+      "bank": "State Bank of India",
+      "verified_by": "Rajesh Kumar",
+      "verified_at": "2026-08-21T10:00:00",
+      "ai_flags": [],
+      "ai_suggested_status": "VERIFIED"
+    },
+    "financial_opened_at": "2026-09-06T21:11:05.197860",
+    "price_analysis": {
+      "vs_estimated": {
+        "estimated_value": 48000000,
+        "quoted_price": 11800000,
+        "deviation_pct": -75.4,
+        "flag": "ABNORMAL_LOW",
+        "note": "75.4% below estimated value."
+      },
+      "vs_peers": {
+        "total_bids": 3,
+        "l1_price": 9200000,
+        "median_price": 11800000,
+        "price_spread": 4300000,
+        "this_rank": 2,
+        "vs_median_pct": 0.0,
+        "vs_l1_pct": 28.3
+      },
+      "flags": [
+        {
+          "type": "ABNORMAL_LOW",
+          "severity": "HIGH",
+          "detail": "Price is more than 40% below estimated value. Verify capability."
+        }
+      ],
+      "overall_concern": "HIGH",
+      "analyzed_at": "2026-09-15T10:51:46.830958"
+    },
+    "preference_verification": {
+      "mse_eligible": false,
+      "mse_category": null,
+      "udyam_number": null,
+      "startup_eligible": false,
+      "startup_recognition": null,
+      "preference_applicable": false,
+      "preference_type": null,
+      "preference_pct": 0,
+      "verified_by": "Procurement Officer",
+      "verified_at": "2026-09-15T10:50:55.467379",
+      "officer_notes": "",
+      "documents_checked": [],
+      "ai_recommendation": null,
+      "officer_final": false
+    },
+    "local_content_verification": {
+      "country_of_origin": "India",
+      "declared_local_content_pct": 0,
+      "verified_local_content_pct": 0,
+      "class": null,
+      "manufacturer": null,
+      "supporting_documents": [],
+      "status": "NEEDS_REVIEW",
+      "officer_notes": "",
+      "verified_by": "Procurement Officer",
+      "verified_at": "2026-09-15T10:50:55.474197"
+    },
+    "oem_verification": {
+      "oem_name": null,
+      "dealer_name": null,
+      "product": null,
+      "model": null,
+      "auth_date": null,
+      "auth_validity": null,
+      "cert_reference": null,
+      "status": "NEEDS_REVIEW",
+      "ai_flags": [],
+      "officer_notes": "",
+      "verified_by": "Procurement Officer",
+      "verified_at": "2026-09-15T10:50:55.480120"
+    }
+  },
+  {
+    "id": "BID-SUB-002",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-002",
+    "bidder_name": "Bharat Industrial Systems Pvt Ltd",
+    "status": "COMPLIANCE_REVIEW",
+    "submitted_at": "2026-08-21T14:15:00",
+    "last_updated": "2026-08-21T14:30:00",
+    "compliance_score": 61,
+    "risk_level": "HIGH",
+    "technical_status": "PENDING",
+    "financial_status": "PENDING",
+    "clarifications": 0,
+    "documents_count": 6,
+    "quoted_price": 9200000,
+    "price_display": "₹92.00 L",
+    "price_breakdown": {
+      "base_price": "7796610",
+      "gst_rate": "18",
+      "gst_amount": "1403390",
+      "installation_charges": "0",
+      "amc_charges_annual": "300000",
+      "total_with_gst": "9200000"
+    },
+    "delivery_period_days": 120,
+    "payment_terms": "50% advance, 50% on delivery",
+    "validity_period_days": 90,
+    "validity_expires_at": "2026-11-19",
+    "emd_reference": "BG/PNB/2026/005678",
+    "emd_bank": "Punjab National Bank",
+    "emd_amount": 2400000,
+    "financial_remarks": "Price includes 1 year warranty. Extended warranty available at extra cost.",
+    "financial_bid_opened": true,
+    "technical_score": 45,
+    "committee_scores": [],
+    "committee_evaluators": 0,
+    "emd_status": "MISMATCH",
+    "emd_verification": {
+      "status": "MISMATCH",
+      "required_amount": 2400000,
+      "submitted_amount": 1500000,
+      "reference": "BG/PNB/2026/005678",
+      "bank": "Punjab National Bank",
+      "verified_by": "Rajesh Kumar",
+      "verified_at": "2026-08-22T10:00:00",
+      "ai_flags": [
+        {
+          "type": "AMOUNT_MISMATCH",
+          "detail": "Required ₹24,00,000, submitted ₹15,00,000 (short by ₹9,00,000)",
+          "severity": "HIGH"
+        }
+      ],
+      "ai_suggested_status": "MISMATCH"
+    },
+    "financial_opened_at": "2026-09-06T21:11:05.197911",
+    "price_analysis": {
+      "vs_estimated": {
+        "estimated_value": 48000000,
+        "quoted_price": 9200000,
+        "deviation_pct": -80.8,
+        "flag": "ABNORMAL_LOW",
+        "note": "80.8% below estimated value."
+      },
+      "vs_peers": {
+        "total_bids": 3,
+        "l1_price": 9200000,
+        "median_price": 11800000,
+        "price_spread": 4300000,
+        "this_rank": 1,
+        "vs_median_pct": -22.0,
+        "vs_l1_pct": 0.0
+      },
+      "flags": [
+        {
+          "type": "ABNORMAL_LOW",
+          "severity": "HIGH",
+          "detail": "Price is more than 40% below estimated value. Verify capability."
+        }
+      ],
+      "overall_concern": "HIGH",
+      "analyzed_at": "2026-09-15T10:49:26.349919"
+    }
+  },
+  {
+    "id": "BID-SUB-003",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-003",
+    "bidder_name": "Nova Engineering Solutions Pvt Ltd",
+    "status": "TECHNICAL_EVALUATION",
+    "submitted_at": "2026-08-22T09:00:00",
+    "last_updated": "2026-08-22T09:20:00",
+    "compliance_score": 91,
+    "risk_level": "LOW",
+    "technical_status": "IN_PROGRESS",
+    "financial_status": "PENDING",
+    "clarifications": 0,
+    "documents_count": 11,
+    "quoted_price": 13500000,
+    "price_display": "₹1.35 Cr",
+    "price_breakdown": {
+      "base_price": "11440678",
+      "gst_rate": "18",
+      "gst_amount": "2059322",
+      "installation_charges": "0",
+      "amc_charges_annual": "750000",
+      "total_with_gst": "13500000"
+    },
+    "delivery_period_days": 75,
+    "payment_terms": "30% advance, 70% on acceptance",
+    "validity_period_days": 180,
+    "validity_expires_at": "2027-02-18",
+    "emd_reference": "BG/KNB/2026/00456",
+    "emd_bank": "Karnataka Bank",
+    "emd_amount": 2400000,
+    "financial_remarks": "Includes 3-year AMC. ISO certified supply chain.",
+    "financial_bid_opened": true,
+    "technical_score": 91,
+    "committee_scores": [
+      91,
+      90,
+      92
+    ],
+    "committee_evaluators": 3,
+    "emd_status": "VERIFIED",
+    "emd_verification": {
+      "status": "VERIFIED",
+      "required_amount": 2400000,
+      "submitted_amount": 2400000,
+      "reference": "BG/KNB/2026/00456",
+      "bank": "Karnataka Bank",
+      "verified_by": "Rajesh Kumar",
+      "verified_at": "2026-08-23T10:00:00",
+      "ai_flags": [],
+      "ai_suggested_status": "VERIFIED"
+    },
+    "financial_opened_at": "2026-09-06T21:11:05.197916",
+    "price_analysis": {
+      "vs_estimated": {
+        "estimated_value": 48000000,
+        "quoted_price": 13500000,
+        "deviation_pct": -71.9,
+        "flag": "ABNORMAL_LOW",
+        "note": "71.9% below estimated value."
+      },
+      "vs_peers": {
+        "total_bids": 3,
+        "l1_price": 9200000,
+        "median_price": 11800000,
+        "price_spread": 4300000,
+        "this_rank": 3,
+        "vs_median_pct": 14.4,
+        "vs_l1_pct": 46.7
+      },
+      "flags": [
+        {
+          "type": "ABNORMAL_LOW",
+          "severity": "HIGH",
+          "detail": "Price is more than 40% below estimated value. Verify capability."
+        }
+      ],
+      "overall_concern": "HIGH",
+      "analyzed_at": "2026-09-15T10:46:51.494319"
+    }
+  },
+  {
+    "id": "BID-SUB-004",
+    "tender_id": "GEM-DEMO-2026-001",
+    "bidder_id": "BID-004",
+    "bidder_name": null,
+    "status": "SUBMITTED",
+    "submitted_at": "2026-09-15T10:38:32.950174",
+    "last_updated": "2026-09-15T10:38:32.950174",
+    "compliance_score": null,
+    "risk_level": null,
+    "technical_status": "PENDING",
+    "financial_status": "PENDING",
+    "clarifications": 0,
+    "documents_count": 0,
+    "quoted_price": null,
+    "price_display": null,
+    "price_breakdown": null,
+    "delivery_period_days": null,
+    "payment_terms": null,
+    "validity_period_days": null,
+    "validity_expires_at": null,
+    "emd_reference": null,
+    "emd_bank": null,
+    "emd_amount": null,
+    "financial_remarks": null,
+    "financial_bid_opened": true,
+    "technical_score": null,
+    "committee_scores": [],
+    "committee_evaluators": 0,
+    "emd_status": "NOT_SUBMITTED",
+    "emd_verification": null,
+    "financial_opened_at": null,
+    "is_test_bidder": true
+  }
+]
