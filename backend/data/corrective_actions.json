@@ -1,0 +1,19 @@
+[
+  {
+    "id": "CA-001",
+    "inspection_id": "INS-001",
+    "contract_id": "CON-2026-001",
+    "bidder_id": "BID-003",
+    "issued_by": "Quality Officer",
+    "issued_at": "2026-10-28T14:00:00",
+    "deadline": "2026-11-12",
+    "type": "REPLACEMENT",
+    "description": "Replace 2 defective IoT Gateway Units (IE-IMS-500) that failed power-on functional test during Batch 1 inspection.",
+    "status": "RESOLVED",
+    "resolved_at": "2026-11-08T11:00:00",
+    "vendor_response": "2 replacement units shipped on 2026-11-07 via DTDC. AWB: 123456789.",
+    "re_inspection_required": true,
+    "re_inspection_id": "INS-002",
+    "impact_on_payment": "No payment impact as replacement received before deadline."
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "RFB-DEMO01",
+    "bidder_id": "BID-002",
+    "bidder_name": "Bharat Industrial Systems Pvt Ltd",
+    "tender_id": "GEM-DEMO-2026-001",
+    "officer": "Rajesh Kumar",
+    "officer_id": "OFF-001",
+    "decision": "DISQUALIFY",
+    "rejection_stage": "Technical Evaluation",
+    "rejection_category": "Technical Requirements Not Met",
+    "rejection_reason": "The submitted technical proposal does not meet the minimum technical specifications specified in the tender. The required IoT equipment specification (IP67 rating) was not provided and the bidder did not satisfy the mandatory technical eligibility criteria outlined in Section 4.2.",
+    "officer_remarks": "Bidder may reapply in future tenders with updated equipment certifications.",
+    "additional_feedback": null,
+    "feedback_sent_at": null,
+    "created_at": "2026-10-02T22:43:21.294990",
+    "read_by_bidder": false,
+    "read_at": null
+  }
+]

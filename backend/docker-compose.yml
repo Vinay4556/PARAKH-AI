@@ -1,0 +1,38 @@
+# Free, self-hosted translation engine for Veritas AI.
+#
+# LibreTranslate is MIT-licensed and open source: no API key, no quota, no
+# expiry, and no third party receives the text being translated. The image
+# downloads its language models on first boot, so the first request to a given
+# language is slower while the model loads.
+#
+#   docker compose up -d libretranslate
+#
+# Languages can be preloaded instead of fetched on demand:
+#   docker compose exec libretranslate libretranslate \
+#     --load-only en hi kn ta te bn mr gu pa ml ur
+#
+# The backend additionally caches every translation permanently in
+# backend/data/translations.json, so a language only ever needs to be
+# translated once.
+
+services:
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    container_name: veritas-libretranslate
+    restart: unless-stopped
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./libretranslate:/app/data
+    environment:
+      # "auto" lets the engine detect the source language; set to a fixed code
+      # such as "en" to skip detection and translate slightly faster.
+      LT_SOURCE_LANGUAGE: auto
+      LT_NUM_THREADS: 4
+      LT_PRELOAD_LANGUAGE_PAIRS: "en->hi,en->kn,en->ta,en->te,en->bn,en->mr,en->gu,en->pa,en->ml,en->ur,en->or,en->as,en->fr,en->de,en->es,en->ar,zh->en,ta->en,te->en,bn->en,mr->en,gu->en,pa->en,ml->en,ur->en,fr->en,de->en,es->en,ar->en"
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:5000/languages')\""]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
