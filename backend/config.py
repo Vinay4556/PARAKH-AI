@@ -20,6 +20,7 @@ REPORTS_DIR = os.environ.get('REPORTS_DIR') or _default_reports
 DATA_DIR = os.environ.get('DATA_DIR') or _default_data
 
 AI_MODE = os.environ.get('AI_MODE', 'demo')  # 'demo' or 'live'
+USE_DATABASE_STORAGE = os.environ.get('USE_DATABASE_STORAGE', 'true').lower() == 'true'  # Store documents in DB
 MAX_UPLOAD_SIZE_MB = 20
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'docx'}
 

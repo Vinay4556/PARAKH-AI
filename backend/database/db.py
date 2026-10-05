@@ -21,7 +21,7 @@ SQLite (used for zero-config local development).
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import (
     Column, String, Integer, Float, Boolean,
-    DateTime, Text, BigInteger, JSON
+    DateTime, Text, BigInteger, JSON, LargeBinary
 )
 from sqlalchemy.dialects.postgresql import JSONB as _PG_JSONB
 
@@ -159,8 +159,10 @@ class Document(_Record):
     extracted_text  = Column(Text)
     status          = Column(String)
     uploaded_at     = Column(String)
-    saved_path      = Column(String)
+    saved_path      = Column(String)  # Deprecated - keeping for backward compatibility
     file_size       = Column(Integer)
+    file_data       = Column(LargeBinary)  # NEW: Store actual file binary data
+    mime_type       = Column(String)       # NEW: Store MIME type for serving
     extracted_entities = Column(JSONB, default=dict)
     tampering_signals  = Column(JSONB, default=list)
     tampered        = Column(Boolean, default=False)

@@ -1,16 +1,30 @@
 """
-Document Routes — PARAKH AI
+Document Routes — Veritas AI
 Handles upload, metadata retrieval, tampering analysis, and file serving.
+Now with DATABASE STORAGE for both local and cloud deployment.
 """
 from flask import Blueprint, jsonify, request, send_file, Response
 import os
 import logging
-from config import UPLOAD_DIR, DATA_DIR
-from services.document_service import (
-    process_uploaded_file, get_documents_for_bidder,
-    get_document_by_id, load_documents, DuplicatePANError
-)
+from config import USE_DATABASE_STORAGE
 from routes.auth import require_role, get_session
+
+# Import database-backed storage by default
+if USE_DATABASE_STORAGE:
+    from services.document_service_db import (
+        process_uploaded_file_db as process_uploaded_file,
+        get_documents_for_bidder,
+        get_document_by_id,
+        delete_document as delete_document_db,
+        serve_document_file,
+        DuplicatePANError
+    )
+else:
+    # Fallback to filesystem storage
+    from services.document_service import (
+        process_uploaded_file, get_documents_for_bidder,
+        get_document_by_id, DuplicatePANError
+    )
 
 documents_bp = Blueprint('documents', __name__)
 logger = logging.getLogger(__name__)
@@ -204,32 +218,37 @@ def upload_documents():
 @documents_bp.route('/api/documents/<doc_id>', methods=['DELETE'])
 @require_role('BIDDER', 'OFFICER')
 def delete_document(doc_id):
-    """Delete a document — removes from documents.json and deletes the physical file."""
-    from services.document_service import load_documents, save_documents
-
-    docs = load_documents()
-    doc = next((d for d in docs if d['id'] == doc_id), None)
+    """Delete a document — removes from database (including binary data)."""
+    doc = get_document_by_id(doc_id)
 
     if not doc:
         return jsonify({'error': 'Document not found'}), 404
     if not _can_touch_bidder(get_session(request), doc.get('bidder_id')):
         return jsonify({'error': 'You can only delete documents belonging to your own organisation'}), 403
 
-    # Delete physical file if it exists
-    saved_path = doc.get('saved_path')
-    bidder_id  = doc.get('bidder_id', '')
-    if saved_path:
-        file_path = os.path.join(UPLOAD_DIR, bidder_id, saved_path)
-        if os.path.exists(file_path):
-            try:
-                os.remove(file_path)
-            except Exception as e:
-                # Log but don't block — still remove from JSON
-                print(f"Warning: could not delete file {file_path}: {e}")
-
-    # Remove from documents.json
-    updated = [d for d in docs if d['id'] != doc_id]
-    save_documents(updated)
+    # Delete from database (handles both metadata and binary)
+    if USE_DATABASE_STORAGE:
+        success = delete_document_db(doc_id)
+        if not success:
+            return jsonify({'error': 'Failed to delete document'}), 500
+    else:
+        # Legacy filesystem deletion
+        from services.document_service import load_documents, save_documents
+        from config import UPLOAD_DIR
+        docs = load_documents()
+        saved_path = doc.get('saved_path')
+        bidder_id = doc.get('bidder_id', '')
+        
+        if saved_path:
+            file_path = os.path.join(UPLOAD_DIR, bidder_id, saved_path)
+            if os.path.exists(file_path):
+                try:
+                    os.remove(file_path)
+                except Exception as e:
+                    print(f"Warning: could not delete file {file_path}: {e}")
+        
+        updated = [d for d in docs if d['id'] != doc_id]
+        save_documents(updated)
 
     return jsonify({
         'success':  True,
@@ -244,14 +263,12 @@ def delete_document(doc_id):
 @documents_bp.route('/api/documents/<doc_id>/reprocess', methods=['POST'])
 @require_role('BIDDER', 'OFFICER')
 def reprocess_document(doc_id):
-    """Re-run OCR + classification + gov verification on an already-uploaded file."""
+    """Re-run OCR + classification + gov verification on an already-uploaded file (from DATABASE)."""
+    import tempfile
     from services.document_service import (
-        load_documents, save_documents,
         extract_text_from_image, extract_text_from_pdf,
-        _run_gov_verification
     )
     from services.ai_service import classify_document, extract_entities
-    import json as _json
 
     doc = get_document_by_id(doc_id)
     if not doc:
@@ -259,63 +276,70 @@ def reprocess_document(doc_id):
     if not _can_touch_bidder(get_session(request), doc.get('bidder_id')):
         return jsonify({'error': 'You can only reprocess documents belonging to your own organisation'}), 403
 
-    saved_path = doc.get('saved_path')
-    bidder_id  = doc.get('bidder_id', '')
-    if not saved_path:
-        return jsonify({'error': 'No physical file to reprocess'}), 400
+    if not USE_DATABASE_STORAGE:
+        return jsonify({'error': 'Reprocess only supported with database storage'}), 400
 
-    file_path = os.path.join(UPLOAD_DIR, bidder_id, saved_path)
-    if not os.path.exists(file_path):
-        return jsonify({'error': 'File not found on disk'}), 404
+    # Get file from database
+    file_stream, filename, mime_type = serve_document_file(doc_id)
+    if not file_stream:
+        return jsonify({'error': 'File data not found in database'}), 404
 
-    # Re-run OCR
-    ext = saved_path.rsplit('.', 1)[-1].lower()
-    if ext == 'pdf':
-        extraction = extract_text_from_pdf(file_path)
-    elif ext in ('png', 'jpg', 'jpeg'):
-        extraction = extract_text_from_image(file_path)
-    else:
-        return jsonify({'error': f'Unsupported file type: {ext}'}), 400
-
-    # Re-classify
-    classification = classify_document(doc.get('filename', ''), extraction['text'])
-    entities       = extract_entities(extraction['text'], classification['type'])
-
-    # Re-run gov verification
+    # Write to temporary file for processing
+    ext = filename.rsplit('.', 1)[-1].lower() if '.' in filename else ''
+    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=f'.{ext}')
+    temp_filepath = temp_file.name
+    
     try:
+        temp_file.write(file_stream.read())
+        temp_file.close()
+        
+        # Re-run OCR
+        if ext == 'pdf':
+            extraction = extract_text_from_pdf(temp_filepath)
+        elif ext in ('png', 'jpg', 'jpeg'):
+            extraction = extract_text_from_image(temp_filepath)
+        else:
+            return jsonify({'error': f'Unsupported file type: {ext}'}), 400
+
+        # Re-classify
+        classification = classify_document(filename, extraction['text'])
+        entities = extract_entities(extraction['text'], classification['type'])
+
+        # Re-run gov verification
         from services.json_cache import load_cached as _load_cached
         bidders_data = _load_cached('bidders.json')
-    except Exception:
-        bidders_data = []
-    bidder_obj   = next((b for b in bidders_data if b['id'] == bidder_id), {})
-    bidder_name  = bidder_obj.get('name', '')
-    gov_verification = _run_gov_verification(classification['type'], extraction['text'], bidder_name)
+        bidder_obj = next((b for b in bidders_data if b['id'] == doc.get('bidder_id')), {})
+        bidder_name = bidder_obj.get('name', '')
+        gov_verification = _run_gov_verification(classification['type'], extraction['text'], bidder_name)
 
-    # Update the document record
-    docs = load_documents()
-    for d in docs:
-        if d['id'] == doc_id:
-            d['extracted_text']    = extraction['text'][:2000]
-            d['extraction_method'] = extraction['method']
-            d['classification']    = classification['type']
-            d['doc_type']          = classification['type']
-            d['confidence']        = classification['confidence']
-            d['pages']             = extraction['pages']
-            d['extracted_entities'] = entities
-            d['gov_verification']  = gov_verification
-            break
-    save_documents(docs)
+        # Update document in database
+        from services.document_storage import update_document_analysis
+        update_document_analysis(
+            doc_id=doc_id,
+            classification=classification['type'],
+            confidence=classification['confidence'],
+            extracted_text=extraction['text'][:5000],
+            extracted_entities=entities,
+            gov_verification=gov_verification
+        )
 
-    return jsonify({
-        'success':        True,
-        'id':             doc_id,
-        'classification': classification['type'],
-        'confidence':     classification['confidence'],
-        'extracted_text': extraction['text'][:500],
-        'extracted_entities': entities,
-        'gov_verification': gov_verification,
-        'method':         extraction['method'],
-    })
+        return jsonify({
+            'success': True,
+            'id': doc_id,
+            'classification': classification['type'],
+            'confidence': classification['confidence'],
+            'extracted_text': extraction['text'][:500],
+            'extracted_entities': entities,
+            'gov_verification': gov_verification,
+            'method': extraction['method'],
+        })
+        
+    finally:
+        # Clean up temp file
+        try:
+            os.unlink(temp_filepath)
+        except Exception:
+            pass
 
 
 # ── Metadata ───────────────────────────────────────────────────────────────
@@ -416,9 +440,7 @@ def get_bidder_tampering_summary(bidder_id):
 def view_document(doc_id):
     """
     Serve the actual uploaded file for officer inline viewing.
-    Accepts token via Authorization header OR ?token= query param
-    (query param is required for <iframe>/<img> which can't set headers).
-    OFFICER role only.
+    Files are now served from DATABASE, not filesystem.
     """
     from routes.auth import SESSIONS, _token_from_request
     token = _token_from_request() or request.args.get('token', '')
@@ -432,24 +454,37 @@ def view_document(doc_id):
     if not doc:
         return jsonify({'error': 'Document not found'}), 404
 
-    saved_path = doc.get('saved_path')
-    if saved_path:
-        file_path = os.path.join(UPLOAD_DIR, doc.get('bidder_id', ''), saved_path)
-        if os.path.exists(file_path):
-            ext = (doc.get('filename', '') or saved_path).rsplit('.', 1)[-1].lower()
-            mime_map = {
-                'pdf':  'application/pdf',
-                'png':  'image/png',
-                'jpg':  'image/jpeg',
-                'jpeg': 'image/jpeg',
-                'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            }
+    if USE_DATABASE_STORAGE:
+        # Serve from database
+        file_stream, filename, mime_type = serve_document_file(doc_id)
+        if file_stream:
             return send_file(
-                file_path,
-                mimetype=mime_map.get(ext, 'application/octet-stream'),
+                file_stream,
+                mimetype=mime_type,
                 as_attachment=False,
-                download_name=doc.get('filename', saved_path),
+                download_name=filename,
             )
+    else:
+        # Legacy filesystem serving
+        from config import UPLOAD_DIR
+        saved_path = doc.get('saved_path')
+        if saved_path:
+            file_path = os.path.join(UPLOAD_DIR, doc.get('bidder_id', ''), saved_path)
+            if os.path.exists(file_path):
+                ext = (doc.get('filename', '') or saved_path).rsplit('.', 1)[-1].lower()
+                mime_map = {
+                    'pdf':  'application/pdf',
+                    'png':  'image/png',
+                    'jpg':  'image/jpeg',
+                    'jpeg': 'image/jpeg',
+                    'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                }
+                return send_file(
+                    file_path,
+                    mimetype=mime_map.get(ext, 'application/octet-stream'),
+                    as_attachment=False,
+                    download_name=doc.get('filename', saved_path),
+                )
 
     # No physical file — render extracted text as styled HTML
     return _render_text_document(doc)
@@ -459,7 +494,7 @@ def view_document(doc_id):
 
 @documents_bp.route('/api/documents/<doc_id>/download', methods=['GET'])
 def download_document(doc_id):
-    """Force-download the actual file. Same token logic as /view."""
+    """Force-download the actual file from DATABASE."""
     from routes.auth import SESSIONS, _token_from_request
     token = _token_from_request() or request.args.get('token', '')
     session = SESSIONS.get(token)
@@ -470,14 +505,26 @@ def download_document(doc_id):
     if not doc:
         return jsonify({'error': 'Document not found'}), 404
 
-    saved_path = doc.get('saved_path')
-    if saved_path:
-        file_path = os.path.join(UPLOAD_DIR, doc.get('bidder_id', ''), saved_path)
-        if os.path.exists(file_path):
-            return send_file(file_path, as_attachment=True,
-                             download_name=doc.get('filename', saved_path))
+    if USE_DATABASE_STORAGE:
+        # Serve from database
+        file_stream, filename, mime_type = serve_document_file(doc_id)
+        if file_stream:
+            return send_file(
+                file_stream,
+                as_attachment=True,
+                download_name=filename,
+            )
+    else:
+        # Legacy filesystem serving
+        from config import UPLOAD_DIR
+        saved_path = doc.get('saved_path')
+        if saved_path:
+            file_path = os.path.join(UPLOAD_DIR, doc.get('bidder_id', ''), saved_path)
+            if os.path.exists(file_path):
+                return send_file(file_path, as_attachment=True,
+                                 download_name=doc.get('filename', saved_path))
 
-    return jsonify({'error': 'File not available for download (demo document)'}), 404
+    return jsonify({'error': 'File not available for download'}), 404
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────
