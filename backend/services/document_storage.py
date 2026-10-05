@@ -6,8 +6,22 @@ Works for both local development and cloud deployment
 import io
 import mimetypes
 from datetime import datetime
+from contextlib import contextmanager
 from database.db import db, Document
-from database.db_utils import session_scope
+
+
+@contextmanager
+def session_scope():
+    """Provide a transactional scope around a series of operations."""
+    session = db.session
+    try:
+        yield session
+        session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        pass  # Don't close the session - Flask-SQLAlchemy manages it
 
 
 def store_document_in_db(
@@ -31,6 +45,7 @@ def store_document_in_db(
 ):
     """
     Store document binary data in database
+    Handles both INSERT (new) and UPDATE (existing)
     
     Args:
         doc_id: Unique document ID
@@ -50,31 +65,68 @@ def store_document_in_db(
             mime_type = 'application/octet-stream'
     
     with session_scope() as session:
-        doc = Document(
-            id=doc_id,
-            bidder_id=bidder_id,
-            tender_id=tender_id,
-            requirement_id=requirement_id,
-            filename=filename,
-            doc_type=classification,
-            classification=classification,
-            confidence=confidence or 0.0,
-            pages=pages or 1,
-            extracted_text=extracted_text or '',
-            status=status,
-            uploaded_at=datetime.utcnow().isoformat(),
-            saved_path=None,  # Not used anymore but kept for backward compatibility
-            file_size=file_size,
-            file_data=file_binary,  # Store binary data
-            mime_type=mime_type,
-            extracted_entities=extracted_entities or {},
-            tampering_signals=tampering_signals or [],
-            tampered=tampered,
-            suspicious=suspicious,
-            reprocessed=False
-        )
+        # Check if document already exists
+        doc = session.query(Document).filter_by(id=doc_id).first()
         
-        session.add(doc)
+        if doc:
+            # UPDATE existing document with binary data
+            doc.file_data = file_binary
+            doc.file_size = file_size
+            doc.mime_type = mime_type
+            if bidder_id:
+                doc.bidder_id = bidder_id
+            if filename:
+                doc.filename = filename
+            if tender_id:
+                doc.tender_id = tender_id
+            if requirement_id:
+                doc.requirement_id = requirement_id
+            if classification:
+                doc.classification = classification
+                doc.doc_type = classification
+            if confidence is not None:
+                doc.confidence = confidence
+            if pages is not None:
+                doc.pages = pages
+            if extracted_text is not None:
+                doc.extracted_text = extracted_text
+            if extracted_entities is not None:
+                doc.extracted_entities = extracted_entities
+            if tampering_signals is not None:
+                doc.tampering_signals = tampering_signals
+            if tampered is not None:
+                doc.tampered = tampered
+            if suspicious is not None:
+                doc.suspicious = suspicious
+            if status:
+                doc.status = status
+        else:
+            # INSERT new document
+            doc = Document(
+                id=doc_id,
+                bidder_id=bidder_id,
+                tender_id=tender_id,
+                requirement_id=requirement_id,
+                filename=filename,
+                doc_type=classification,
+                classification=classification,
+                confidence=confidence or 0.0,
+                pages=pages or 1,
+                extracted_text=extracted_text or '',
+                status=status,
+                uploaded_at=datetime.utcnow().isoformat(),
+                saved_path=None,  # Not used anymore but kept for backward compatibility
+                file_size=file_size,
+                file_data=file_binary,  # Store binary data
+                mime_type=mime_type,
+                extracted_entities=extracted_entities or {},
+                tampering_signals=tampering_signals or [],
+                tampered=tampered,
+                suspicious=suspicious,
+                reprocessed=False
+            )
+            session.add(doc)
+        
         session.flush()
         
         return {

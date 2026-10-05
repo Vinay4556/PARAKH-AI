@@ -5,7 +5,7 @@ Run this once to migrate existing documents
 import os
 import sys
 from database.db import db
-from database.connection import get_database_url
+from database.connection import resolve_database
 from flask import Flask
 from services.document_storage import store_document_in_db
 from services.json_cache import load_cached
@@ -16,7 +16,8 @@ def migrate_documents():
     
     # Initialize Flask app
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = get_database_url()
+    db_info = resolve_database()
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_info['url']
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
     
