@@ -1,5 +1,5 @@
 #!/bin/bash
-# Render startup script for PARAKH AI Backend
+# Render startup script for Veritas AI Backend
 
 # Activate virtual environment if it exists
 if [ -d "/opt/render/project/src/.venv" ]; then

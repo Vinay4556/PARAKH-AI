@@ -1,4 +1,4 @@
-# Deploying PARAKH AI — Vercel (frontend) + Railway (backend) + PostgreSQL
+# Deploying Veritas AI — Vercel (frontend) + Railway (backend) + PostgreSQL
 
 ```
 Browser ──► Vercel (React app)

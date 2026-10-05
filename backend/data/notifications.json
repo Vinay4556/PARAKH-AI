@@ -32,7 +32,7 @@
     "id": "NOTIF-003",
     "type": "TAMPERING_ALERT",
     "title": "Document Tampering Signal Detected",
-    "message": "PARAKH AI has detected a potential tampering signal in documents submitted by BID-002 (Bharat Industrial Systems). Please review before making evaluation decisions.",
+    "message": "Veritas AI has detected a potential tampering signal in documents submitted by BID-002 (Bharat Industrial Systems). Please review before making evaluation decisions.",
     "recipient_id": "USR-001",
     "recipient_role": "OFFICER",
     "broadcast": false,

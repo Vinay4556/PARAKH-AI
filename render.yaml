@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: parakh-ai-backend
+    runtime: python
+    region: singapore
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn app:app --workers 2 --threads 4 --timeout 120 --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: GOV_ADAPTER_MODE
+        value: MOCK
+      - key: CORS_ORIGINS
+        value: https://parakh-ai-kfhf.vercel.app
+    healthCheckPath: /api/health
+
+  - type: web
+    name: parakh-ai-frontend
+    runtime: node
+    region: singapore
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://parakh-ai-backend.onrender.com/api/*
+      - type: rewrite
+        source: /*
+        destination: /index.html

@@ -1,5 +1,5 @@
 """
-End-to-end smoke test for a RUNNING PARAKH AI backend.
+End-to-end smoke test for a RUNNING Veritas AI backend.
 
     python tests/smoke_test.py                                   # http://localhost:5000
     python tests/smoke_test.py https://your-app.up.railway.app   # deployed backend
