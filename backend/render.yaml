@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: parakh-ai-backend
+    name: veritas-ai-backend
     runtime: python
     plan: free
     region: singapore

@@ -69,7 +69,7 @@ Demo accounts: `officer@demo.gov`, `bidder@demo.com`, `citizen@demo.com` — pas
 ### Alternative: call Railway directly (no rewrite)
 Set `VITE_API_URL=https://<railway-domain>` in Vercel (Production + Preview) and **redeploy**
 (Vite bakes it in at build time). Then add your Vercel domain to `CORS_ORIGINS` on Railway
-(`https://parakh-ai-kfhf.vercel.app` and `*parakh-ai*.vercel.app` previews are already allowed).
+(`https://veritas-ai-frontend.vercel.app` and `*veritas-ai*.vercel.app` previews are already allowed).
 Use this if uploads > ~4 MB fail through the Vercel proxy.
 
 ## 4. Verify the deployment (2 minutes)

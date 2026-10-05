@@ -89,9 +89,9 @@ app.config['SECRET_KEY'] = _secret
 _cors_origins = [
     'http://localhost:3000', 'http://127.0.0.1:3000',
     'http://localhost:5173', 'http://127.0.0.1:5173',
-    'https://parakh-ai-kfhf.vercel.app',
-    # Vercel preview deployments of THIS project: parakh-ai-<hash>-<team>.vercel.app
-    re.compile(r'^https://parakh-ai[a-z0-9-]*\.vercel\.app$'),
+    'https://veritas-ai-frontend.vercel.app',
+    # Vercel preview deployments of THIS project: veritas-ai-<hash>-<team>.vercel.app
+    re.compile(r'^https://veritas-ai[a-z0-9-]*\.vercel\.app$'),
 ]
 _cors_origins += [o.strip().rstrip('/') for o in os.environ.get('CORS_ORIGINS', '').split(',') if o.strip()]
 
