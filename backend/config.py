@@ -1,5 +1,6 @@
 import os
 
+# Configuration for Veritas AI - PostgreSQL Integration Ready
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # On cloud platforms (Render, Railway), the container filesystem may be read-only.
