@@ -37,6 +37,7 @@ from routes.verification import verification_bp  # noqa: E402
 from routes.grievance import grievance_bp  # noqa: E402
 from routes.chat import chat_bp  # noqa: E402
 from routes.translate import translate_bp  # noqa: E402
+from routes.admin import admin_bp  # noqa: E402
 
 VERSION = '2.2.0'
 
@@ -147,7 +148,7 @@ def compress_response(response):
 # ── Blueprints ────────────────────────────────────────────────────────────────
 for _bp in (auth_bp, dashboard_bp, tenders_bp, bidders_bp, documents_bp, reports_bp,
             bidder_portal_bp, officer_portal_bp, officer_summary_bp, public_portal_bp,
-            contracts_bp, verification_bp, grievance_bp, chat_bp, translate_bp):
+            contracts_bp, verification_bp, grievance_bp, chat_bp, translate_bp, admin_bp):
     app.register_blueprint(_bp)
 
 
