@@ -10,31 +10,38 @@ import ScoreRing from '../components/ScoreRing.jsx'
 import { RiskBadge } from '../components/StatusBadge.jsx'
 import { useToast } from '../components/Toast.jsx'
 
-const STATIC_BIDDERS = [
-  { id: 'BID-001', name: 'ABC Technologies Pvt Ltd', score: 87, risk: 'MEDIUM', verified: 14, review: 3, non_compliant: 1, missing: 2 },
-  { id: 'BID-002', name: 'Bharat Industrial Systems Pvt Ltd', score: 61, risk: 'HIGH', verified: 7, review: 1, non_compliant: 3, missing: 9 },
-  { id: 'BID-003', name: 'Nova Engineering Solutions Pvt Ltd', score: 91, risk: 'LOW', verified: 16, review: 1, non_compliant: 0, missing: 3 },
-]
+// Removed hardcoded STATIC_BIDDERS - now loads dynamically from API
 
 export default function Reports() {
   const navigate = useNavigate()
   const { addToast: showToast } = useToast()
   const [generating, setGenerating] = useState({})
-  const [bidders, setBidders] = useState(STATIC_BIDDERS)
+  const [bidders, setBidders] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     getTenderBidders('GEM-DEMO-2026-001')
       .then((res) => {
         const loaded = res.data || []
-        if (loaded.length > 0) {
-          // Merge dynamic scores with static counts (compliance counts need separate API)
-          setBidders(STATIC_BIDDERS.map((sb) => {
-            const live = loaded.find((b) => b.id === sb.id)
-            return live ? { ...sb, score: live.compliance_score || sb.score, risk: live.risk_level || sb.risk } : sb
-          }))
-        }
+        // Map bidders from API with compliance counts defaulting to 0
+        const mappedBidders = loaded.map((b) => ({
+          id: b.id,
+          name: b.name || b.id,
+          score: b.compliance_score || 0,
+          risk: b.risk_level || 'UNKNOWN',
+          verified: 0,  // These would come from detailed compliance API
+          review: 0,
+          non_compliant: 0,
+          missing: 0,
+        }))
+        setBidders(mappedBidders)
       })
-      .catch(() => {}) // fallback to static
+      .catch((err) => {
+        console.error('Failed to load bidders:', err)
+        showToast('Failed to load bidders', 'error')
+      })
+      .finally(() => setLoading(false))
   }, [])
 
   const handleReport = async (bidderId, bidderName) => {
@@ -102,7 +109,7 @@ export default function Reports() {
         </div>
         <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-white/20">
           <div className="text-center">
-            <p className="text-xl font-bold text-white">3</p>
+            <p className="text-xl font-bold text-white">{bidders.length}</p>
             <p className="text-xs text-blue-300">Total Bidders</p>
           </div>
           <div className="text-center">
@@ -110,7 +117,9 @@ export default function Reports() {
             <p className="text-xs text-blue-300">Requirements</p>
           </div>
           <div className="text-center">
-            <p className="text-xl font-bold text-white">80%</p>
+            <p className="text-xl font-bold text-white">
+              {bidders.length > 0 ? Math.round(bidders.reduce((sum, b) => sum + b.score, 0) / bidders.length) : 0}%
+            </p>
             <p className="text-xs text-blue-300">Avg Compliance</p>
           </div>
         </div>
