@@ -22,6 +22,7 @@ def reset_demo_compliance():
         results = {
             'json_reset': [],
             'db_reset': [],
+            'compliance_cleared': [],
             'errors': []
         }
         
@@ -29,6 +30,7 @@ def reset_demo_compliance():
         try:
             bidders = load_cached('bidders.json')
             documents = load_cached('documents.json')
+            compliance = load_cached('compliance.json')
             
             # Count uploaded documents per bidder
             docs_by_bidder = {}
@@ -48,6 +50,12 @@ def reset_demo_compliance():
                     bidder['risk_level'] = 'UNKNOWN'
                     bidder['status'] = 'pending'
                     bidder['analyzed_at'] = None
+                    bidder['document_ids'] = []
+                    
+                    # Clear compliance analysis results
+                    if bidder_id in compliance:
+                        del compliance[bidder_id]
+                        results['compliance_cleared'].append(bidder_id)
                     
                     results['json_reset'].append({
                         'id': bidder_id,
@@ -56,8 +64,9 @@ def reset_demo_compliance():
                         'new_score': 0
                     })
             
-            if results['json_reset']:
+            if results['json_reset'] or results['compliance_cleared']:
                 save_cached('bidders.json', bidders)
+                save_cached('compliance.json', compliance)
                 
         except Exception as e:
             results['errors'].append(f"JSON reset error: {str(e)}")
@@ -110,6 +119,7 @@ def reset_demo_compliance():
             'message': 'Demo compliance data reset completed',
             'json_bidders_reset': len(results['json_reset']),
             'db_bidders_reset': len(results['db_reset']),
+            'compliance_cleared': len(results['compliance_cleared']),
             'details': results,
             'note': 'Bidders with no uploaded documents now show 0% compliance'
         }), 200
