@@ -107,9 +107,9 @@ def get_compliance_results(bidder_id: str, requirements: list, documents: list, 
     """Calculate full compliance results for a bidder.
 
     Rules:
-    - BID-001, BID-002, BID-003 use pre-computed DEMO_COMPLIANCE results.
-    - Every other bidder (including newly registered real bidders) goes through
-      the DYNAMIC path which reads only actually-uploaded documents.
+    - ALL bidders (including BID-001, BID-002, BID-003) now use DYNAMIC path.
+    - Demo compliance hardcoded data has been disabled for production.
+    - The dynamic path reads only actually-uploaded documents.
     - The dynamic path NEVER fabricates data:
         * If a required document is missing → MISSING (not VERIFIED).
         * If an identifier mismatches the self-declared value → REVIEW.
@@ -117,9 +117,10 @@ def get_compliance_results(bidder_id: str, requirements: list, documents: list, 
     """
     results = {}
 
-    # Only the three named demo bidders use pre-computed results
-    DEMO_BIDDER_IDS = {'BID-001', 'BID-002', 'BID-003'}
-    compliance_data = DEMO_COMPLIANCE.get(bidder_id) if bidder_id in DEMO_BIDDER_IDS else None
+    # DISABLED: Demo bidders now use dynamic compliance like all others
+    # DEMO_BIDDER_IDS = {'BID-001', 'BID-002', 'BID-003'}
+    # compliance_data = DEMO_COMPLIANCE.get(bidder_id) if bidder_id in DEMO_BIDDER_IDS else None
+    compliance_data = None  # Always use dynamic compliance
 
     # Doc classification type -> requirement ID mapping
     DOC_TYPE_TO_REQ = {
