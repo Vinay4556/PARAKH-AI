@@ -1,5 +1,5 @@
 """
-Bidder Portal Routes - PARAKH AI
+Bidder Portal Routes - Veritas AI
 APIs for the bidder/seller-side experience.
 Includes: bid submission, draft, withdrawal, modification, versioning, readiness, pre-bid Q&A.
 """

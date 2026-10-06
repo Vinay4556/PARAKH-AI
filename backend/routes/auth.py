@@ -1,5 +1,5 @@
 """
-Auth routes - PARAKH AI
+Auth routes - Veritas AI
 Token-based auth with SIGNED, STATELESS tokens.
 
 The previous version kept sessions in a process-local dict.  On Railway (several
@@ -29,7 +29,7 @@ from database.db_utils import load_cached as load_json, save_cached as save_json
 # ── Signed-token session store ──────────────────────────────────────────────
 
 def _serializer():
-    return URLSafeTimedSerializer(current_app.config['SECRET_KEY'], salt='parakh-auth-v1')
+    return URLSafeTimedSerializer(current_app.config['SECRET_KEY'], salt='veritas-auth-v1')
 
 
 def issue_token(session: dict) -> str:

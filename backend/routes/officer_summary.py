@@ -1036,6 +1036,6 @@ def tender_summary_excel(tender_id):
 
     from flask import send_file
     date_str = datetime.now().strftime('%Y%m%d')
-    filename = f'ParakhAI_Bidder_Summary_{tender_id}_{date_str}.xlsx'
+    filename = f'VeritasAI_Bidder_Summary_{tender_id}_{date_str}.xlsx'
     return send_file(buf, mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                      as_attachment=True, download_name=filename)

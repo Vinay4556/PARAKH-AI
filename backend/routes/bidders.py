@@ -299,7 +299,7 @@ def analyze_bidder(bidder_id):
         audit.append({
             'id':        next_audit_id(audit),
             'timestamp': datetime.now().isoformat(),
-            'actor':     'PARAKH AI Engine',
+            'actor':     'Veritas AI Engine',
             'action':    'Compliance Analysis Completed',
             'detail':    (f"Bidder {bidder.get('name', bidder_id)} scored "
                           f"{score_data['overall_score']}% with {score_data['risk_level']} risk."),

@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: veritas-ai-backend
+    name: parakh-ai-backend
     runtime: python
     region: singapore
     buildCommand: pip install -r backend/requirements.txt
@@ -17,11 +17,11 @@ services:
       - key: GOV_ADAPTER_MODE
         value: MOCK
       - key: CORS_ORIGINS
-        value: https://veritas-ai-frontend.vercel.app
+        value: https://parakh-ai-kfhf.vercel.app
     healthCheckPath: /api/health
 
   - type: web
-    name: veritas-ai-frontend
+    name: parakh-ai-frontend
     runtime: node
     region: singapore
     buildCommand: cd frontend && npm install && npm run build
@@ -29,7 +29,7 @@ services:
     routes:
       - type: rewrite
         source: /api/*
-        destination: https://veritas-ai-backend.onrender.com/api/*
+        destination: https://parakh-ai-backend.onrender.com/api/*
       - type: rewrite
         source: /*
         destination: /index.html
