@@ -1,8 +1,12 @@
 {
+  "buildCommand": "npm run build",
+  "env": {
+    "VITE_API_URL": "https://parakh-ai-backend-wg5o.onrender.com"
+  },
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://veritas-ai-backend.onrender.com/api/:path*"
+      "destination": "https://parakh-ai-backend-wg5o.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",
