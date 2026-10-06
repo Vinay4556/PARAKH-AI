@@ -11,6 +11,101 @@ from routes.auth import require_role
 admin_bp = Blueprint('admin', __name__)
 
 
+@admin_bp.route('/api/admin/reset-all-compliance', methods=['POST'])
+@require_role('OFFICER')
+def reset_all_compliance():
+    """
+    FORCEFULLY reset ALL bidders to 0% compliance, regardless of documents.
+    Use this to completely clear demo data.
+    """
+    try:
+        results = {
+            'json_reset': [],
+            'db_reset': [],
+            'compliance_cleared': [],
+            'errors': []
+        }
+        
+        # ── Reset ALL bidders in JSON ────────────────────────────
+        try:
+            bidders = load_cached('bidders.json')
+            compliance = load_cached('compliance.json')
+            
+            for bidder in bidders:
+                bidder_id = bidder.get('id')
+                old_score = bidder.get('compliance_score', 0)
+                
+                if old_score > 0 or bidder.get('status') != 'pending':
+                    bidder['compliance_score'] = 0
+                    bidder['risk_level'] = 'UNKNOWN'
+                    bidder['status'] = 'pending'
+                    bidder['analyzed_at'] = None
+                    bidder['document_ids'] = []
+                    
+                    results['json_reset'].append({
+                        'id': bidder_id,
+                        'name': bidder.get('name'),
+                        'old_score': old_score,
+                        'new_score': 0
+                    })
+            
+            # Clear ALL compliance analysis
+            cleared_ids = list(compliance.keys())
+            compliance.clear()
+            results['compliance_cleared'] = cleared_ids
+            
+            save_cached('bidders.json', bidders)
+            save_cached('compliance.json', compliance)
+                
+        except Exception as e:
+            results['errors'].append(f"JSON reset error: {str(e)}")
+        
+        # ── Reset ALL bidders in Database ────────────────────────
+        try:
+            bidders_db = db.session.execute(text("SELECT id, name, compliance_score FROM bidders")).fetchall()
+            
+            for bidder in bidders_db:
+                bidder_id, bidder_name, old_score = bidder[0], bidder[1], bidder[2]
+                
+                db.session.execute(text("""
+                    UPDATE bidders 
+                    SET compliance_score = 0,
+                        risk_level = 'UNKNOWN',
+                        status = 'pending',
+                        analyzed_at = NULL,
+                        document_ids = '[]'::jsonb
+                    WHERE id = :id
+                """), {"id": bidder_id})
+                
+                results['db_reset'].append({
+                    'id': bidder_id,
+                    'name': bidder_name,
+                    'old_score': old_score or 0,
+                    'new_score': 0
+                })
+            
+            db.session.commit()
+            
+        except Exception as e:
+            db.session.rollback()
+            results['errors'].append(f"Database reset error: {str(e)}")
+        
+        return jsonify({
+            'success': True,
+            'message': 'ALL compliance data forcefully reset to 0%',
+            'json_bidders_reset': len(results['json_reset']),
+            'db_bidders_reset': len(results['db_reset']),
+            'compliance_cleared': len(results['compliance_cleared']),
+            'details': results
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'Reset failed: {str(e)}'
+        }), 500
+
+
 @admin_bp.route('/api/admin/reset-demo-compliance', methods=['POST'])
 @require_role('OFFICER')  # Only officers can run admin tasks
 def reset_demo_compliance():
