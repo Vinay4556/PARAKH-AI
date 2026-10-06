@@ -13,7 +13,7 @@ const BASE = `${RAW_API}/api`
 
 const api = axios.create({
   baseURL: BASE,
-  timeout: 30000,
+  timeout: 90000, // 90 seconds to account for Render cold starts (free tier spins down after inactivity)
   headers: { 'Content-Type': 'application/json' },
 })
 
