@@ -58,27 +58,5 @@
     "submitted_at": "2026-08-22T09:00:00",
     "analyzed_at": null,
     "document_ids": []
-  },
-  {
-    "id": "BID-004",
-    "tender_id": "GEM-DEMO-2026-001",
-    "name": null,
-    "short_name": null,
-    "gstin": null,
-    "pan": null,
-    "email": null,
-    "phone": null,
-    "address": null,
-    "state": null,
-    "incorporation_year": null,
-    "type": null,
-    "status": "pending",
-    "compliance_score": 0,
-    "risk_level": "UNKNOWN",
-    "submitted_at": "2026-09-15T10:38:32.950174",
-    "analyzed_at": null,
-    "document_ids": [],
-    "is_test_bidder": true,
-    "_note": "Registration fields were placeholder test data. All fields reset to null. Real values must come from uploaded documents."
   }
 ]
