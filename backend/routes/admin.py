@@ -4,7 +4,7 @@ Administrative endpoints for maintenance and cleanup tasks.
 """
 from flask import Blueprint, jsonify
 from database.db import db
-from database.db_utils import load_cached, save_cached
+from database.db_utils import load_cached, save_cached, invalidate_all
 from sqlalchemy import text
 from routes.auth import require_role
 
@@ -89,6 +89,9 @@ def reset_all_compliance():
         except Exception as e:
             db.session.rollback()
             results['errors'].append(f"Database reset error: {str(e)}")
+        
+        # Clear all caches
+        invalidate_all()
         
         return jsonify({
             'success': True,
