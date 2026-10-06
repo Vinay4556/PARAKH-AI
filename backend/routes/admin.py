@@ -11,6 +11,49 @@ from routes.auth import require_role
 admin_bp = Blueprint('admin', __name__)
 
 
+@admin_bp.route('/api/admin/delete-all-documents', methods=['POST'])
+@require_role('OFFICER')
+def delete_all_documents():
+    """
+    Delete ALL documents from database.
+    WARNING: This is irreversible!
+    """
+    try:
+        # Count before
+        count_before = db.session.execute(text("SELECT COUNT(*) FROM documents")).scalar()
+        
+        # Delete all documents
+        db.session.execute(text("DELETE FROM documents"))
+        
+        # Update bidders to remove document references
+        db.session.execute(text("""
+            UPDATE bidders 
+            SET document_ids = '[]'::jsonb
+        """))
+        
+        db.session.commit()
+        
+        # Count after
+        count_after = db.session.execute(text("SELECT COUNT(*) FROM documents")).scalar()
+        
+        # Clear cache
+        invalidate_all()
+        
+        return jsonify({
+            'success': True,
+            'message': 'All documents deleted',
+            'documents_deleted': count_before - count_after,
+            'documents_remaining': count_after
+        }), 200
+        
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({
+            'success': False,
+            'error': f'Delete failed: {str(e)}'
+        }), 500
+
+
 @admin_bp.route('/api/admin/reset-all-compliance', methods=['POST'])
 @require_role('OFFICER')
 def reset_all_compliance():
