@@ -23,6 +23,21 @@ def get_dashboard():
 
     # Count uploaded documents in ONE pass over all_docs — no per-bidder loop
     total_docs = sum(1 for d in all_docs if d.get('saved_path'))
+    
+    # Build a lookup of document counts per bidder (only uploaded docs)
+    docs_by_bidder: dict = {}
+    for d in all_docs:
+        if d.get('saved_path'):
+            bid = d.get('bidder_id')
+            if bid:
+                docs_by_bidder[bid] = docs_by_bidder.get(bid, 0) + 1
+    
+    # Reset compliance scores for bidders with no uploaded documents
+    for b in bidders:
+        if docs_by_bidder.get(b['id'], 0) == 0:
+            b['compliance_score'] = 0
+            b['risk_level'] = 'UNKNOWN'
+            b['status'] = 'pending'
 
     scored_bidders = [b for b in bidders
                       if b.get('compliance_score') is not None

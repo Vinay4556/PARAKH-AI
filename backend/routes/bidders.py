@@ -207,7 +207,16 @@ def list_bidders_for_tender(tender_id):
     result = []
     for b in tender_bidders:
         b = _sanitize_bidder(b)
-        b['document_count'] = len(docs_by_bidder.get(b['id'], []))
+        doc_count = len(docs_by_bidder.get(b['id'], []))
+        b['document_count'] = doc_count
+        
+        # If no documents uploaded, reset compliance to 0 and status to pending
+        if doc_count == 0:
+            b['compliance_score'] = 0
+            b['risk_level'] = 'UNKNOWN'
+            b['status'] = 'pending'
+            b['analyzed_at'] = None
+        
         result.append(b)
     return jsonify(result)
 
@@ -223,6 +232,14 @@ def get_bidder(bidder_id):
     # Only count documents that were actually uploaded (not demo docs)
     uploaded_docs = [d for d in docs if d.get('saved_path')]
     bidder['document_count'] = len(uploaded_docs)
+    
+    # If no documents uploaded, reset compliance to 0 and status to pending
+    if len(uploaded_docs) == 0:
+        bidder['compliance_score'] = 0
+        bidder['risk_level'] = 'UNKNOWN'
+        bidder['status'] = 'pending'
+        bidder['analyzed_at'] = None
+    
     # Attach extracted/verified identity fields from uploaded documents
     bidder = _attach_extracted_registration(bidder, docs)
     return jsonify(bidder)
