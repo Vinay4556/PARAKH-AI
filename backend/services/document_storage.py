@@ -288,6 +288,7 @@ def get_documents_by_bidder(bidder_id):
                 'tender_id': doc.tender_id,
                 'requirement_id': doc.requirement_id,
                 'filename': doc.filename,
+                'saved_path': doc.id,  # For database storage, use doc ID as saved_path indicator
                 'classification': doc.classification,
                 'confidence': doc.confidence,
                 'pages': doc.pages,
