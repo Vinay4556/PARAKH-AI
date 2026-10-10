@@ -26,7 +26,7 @@
     "prebid_questions": [
       {
         "id": "PBQ-DEMO01",
-        "bidder_id": "BID-001",
+        "bidder_id": "BID-SUB-001",
         "question": "Can a bidder submit ISO 9001 renewal application receipt in lieu of certificate if the original has lapsed?",
         "category": "Technical",
         "submitted_at": "2026-08-11T10:30:00",
@@ -38,7 +38,7 @@
       },
       {
         "id": "PBQ-DEMO02",
-        "bidder_id": "BID-002",
+        "bidder_id": "BID-SUB-002",
         "question": "Is experience of a parent company acceptable if the subsidiary bidding has less than 5 years?",
         "category": "Eligibility",
         "submitted_at": "2026-08-12T09:00:00",
@@ -82,9 +82,9 @@
       "local_content_threshold": 50
     },
     "bidder_ids": [
-      "BID-001",
-      "BID-002",
-      "BID-003"
+      "BID-SUB-001",
+      "BID-SUB-002",
+      "BID-SUB-003"
     ],
     "requirement_ids": [
       "REQ-001",

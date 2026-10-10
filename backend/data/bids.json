@@ -2,7 +2,7 @@
   {
     "id": "BID-SUB-001",
     "tender_id": "GEM-DEMO-2026-001",
-    "bidder_id": "BID-001",
+    "bidder_id": "BID-SUB-001",
     "bidder_name": "ABC Technologies Pvt Ltd",
     "status": "COMPLIANCE_REVIEW",
     "submitted_at": "2026-08-20T10:30:00",
@@ -125,7 +125,7 @@
   {
     "id": "BID-SUB-002",
     "tender_id": "GEM-DEMO-2026-001",
-    "bidder_id": "BID-002",
+    "bidder_id": "BID-SUB-002",
     "bidder_name": "Bharat Industrial Systems Pvt Ltd",
     "status": "COMPLIANCE_REVIEW",
     "submitted_at": "2026-08-21T14:15:00",
@@ -208,7 +208,7 @@
   {
     "id": "BID-SUB-003",
     "tender_id": "GEM-DEMO-2026-001",
-    "bidder_id": "BID-003",
+    "bidder_id": "BID-SUB-003",
     "bidder_name": "Nova Engineering Solutions Pvt Ltd",
     "status": "TECHNICAL_EVALUATION",
     "submitted_at": "2026-08-22T09:00:00",
