@@ -223,26 +223,40 @@ def list_bidders_for_tender(tender_id):
 
 @bidders_bp.route('/api/bidders/<bidder_id>', methods=['GET'])
 def get_bidder(bidder_id):
-    bidders = load_bidders()
-    bidder = next((b for b in bidders if b['id'] == bidder_id), None)
-    if not bidder:
-        return jsonify({'error': 'Bidder not found'}), 404
-    docs = get_documents_for_bidder(bidder_id)
-    bidder = _sanitize_bidder(bidder)
-    # Only count documents that were actually uploaded (not demo docs)
-    uploaded_docs = [d for d in docs if d.get('saved_path')]
-    bidder['document_count'] = len(uploaded_docs)
-    
-    # If no documents uploaded, reset compliance to 0 and status to pending
-    if len(uploaded_docs) == 0:
-        bidder['compliance_score'] = 0
-        bidder['risk_level'] = 'UNKNOWN'
-        bidder['status'] = 'pending'
-        bidder['analyzed_at'] = None
-    
-    # Attach extracted/verified identity fields from uploaded documents
-    bidder = _attach_extracted_registration(bidder, docs)
-    return jsonify(bidder)
+    try:
+        bidders = load_bidders()
+        bidder = next((b for b in bidders if b['id'] == bidder_id), None)
+        if not bidder:
+            return jsonify({'error': 'Bidder not found'}), 404
+        
+        # Try to get documents, but handle DB errors gracefully
+        try:
+            docs = get_documents_for_bidder(bidder_id)
+        except Exception as doc_err:
+            print(f"[ERROR] Failed to get documents for {bidder_id}: {doc_err}")
+            # Return bidder without documents if DB fails
+            docs = []
+        
+        bidder = _sanitize_bidder(bidder)
+        # Only count documents that were actually uploaded (not demo docs)
+        uploaded_docs = [d for d in docs if d.get('saved_path')]
+        bidder['document_count'] = len(uploaded_docs)
+        
+        # If no documents uploaded, reset compliance to 0 and status to pending
+        if len(uploaded_docs) == 0:
+            bidder['compliance_score'] = 0
+            bidder['risk_level'] = 'UNKNOWN'
+            bidder['status'] = 'pending'
+            bidder['analyzed_at'] = None
+        
+        # Attach extracted/verified identity fields from uploaded documents
+        bidder = _attach_extracted_registration(bidder, docs)
+        return jsonify(bidder)
+    except Exception as e:
+        print(f"[ERROR] get_bidder failed for {bidder_id}: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'Failed to retrieve bidder: {str(e)}'}), 500
 
 
 @bidders_bp.route('/api/bidders/<bidder_id>/documents', methods=['GET'])
