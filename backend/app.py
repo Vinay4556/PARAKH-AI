@@ -92,6 +92,7 @@ _cors_origins = [
     'http://localhost:5173', 'http://127.0.0.1:5173',
     'https://parakh-ai-kfhf.vercel.app',
     'https://parakh-ai-kfhf.aevovera.vercel.app',
+    'https://parakh-ai-kfhf-git-main-aevovera.vercel.app',  # Git branch deployments
     # Vercel preview deployments - match any variation:
     # parakh-ai-*.vercel.app (simple previews)
     # parakh-ai-*.<team>.vercel.app (team-scoped)
@@ -99,6 +100,7 @@ _cors_origins = [
     # parakh-ai-kfhf-*.<team>.vercel.app (team branch previews)
     re.compile(r'^https://parakh-ai(-kfhf)?(-[a-z0-9]+)?\.vercel\.app$'),
     re.compile(r'^https://parakh-ai(-kfhf)?(-[a-z0-9]+)?\.aevovera\.vercel\.app$'),
+    re.compile(r'^https://parakh-ai(-kfhf)?(-git-[a-z0-9-]+)?-[a-z0-9]+\.vercel\.app$'),  # Git deployments
     re.compile(r'^https://parakh-ai(-kfhf)?(-[a-z0-9]+)?\.[a-z0-9-]+\.vercel\.app$'),
 ]
 _cors_origins += [o.strip().rstrip('/') for o in os.environ.get('CORS_ORIGINS', '').split(',') if o.strip()]
