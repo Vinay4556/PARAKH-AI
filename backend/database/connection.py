@@ -59,9 +59,16 @@ def engine_options(url: str) -> dict:
     if url.startswith('postgresql'):
         opts.update(
             pool_recycle=280,            # below typical 300 s idle limits
-            pool_size=5,
-            max_overflow=5,
-            connect_args={'connect_timeout': 10},   # psycopg2-only argument
+            pool_size=3,                 # Reduced for free tier
+            max_overflow=2,              # Reduced for free tier
+            pool_timeout=30,             # Wait up to 30s for connection from pool
+            connect_args={
+                'connect_timeout': 10,
+                'keepalives': 1,
+                'keepalives_idle': 30,
+                'keepalives_interval': 10,
+                'keepalives_count': 5,
+            },
         )
     elif url.startswith('sqlite'):
         opts['connect_args'] = {'check_same_thread': False}

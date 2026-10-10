@@ -107,6 +107,7 @@
         <small style="color: #6b7280;">Get token by logging into the app, then in console: localStorage.getItem('auth_token')</small>
 
         <div style="margin-top: 20px;">
+            <button onclick="testAuth()" id="testBtn" style="background: #059669; margin-bottom: 10px;">🔍 Test Authentication</button>
             <button onclick="resetCompliance()" id="resetBtn">🔄 Reset Compliance Scores</button>
         </div>
 
@@ -114,6 +115,50 @@
     </div>
 
     <script>
+        async function testAuth() {
+            const backendUrl = document.getElementById('backendUrl').value.trim();
+            const authToken = document.getElementById('authToken').value.trim();
+            const resultDiv = document.getElementById('result');
+            const btn = document.getElementById('testBtn');
+
+            resultDiv.className = 'result hidden';
+            resultDiv.textContent = '';
+
+            if (!backendUrl || !authToken) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '❌ Please enter backend URL and auth token';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Testing...';
+
+            try {
+                const response = await fetch(`${backendUrl}/api/auth/me`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = `✅ AUTH WORKS!\n\nYour token is valid.\n\nUser Details:\n${JSON.stringify(data, null, 2)}\n\nYou can now try the Reset button.`;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.textContent = `❌ AUTH FAILED\n\nStatus: ${response.status}\nMessage: ${data.error || 'Authentication failed'}\n\nThis means:\n- Your token is invalid or expired\n- You need to logout and login again\n- Get a fresh token from console`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `❌ ERROR: ${error.message}`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🔍 Test Authentication';
+            }
+        }
+
         async function resetCompliance() {
             const backendUrl = document.getElementById('backendUrl').value.trim();
             const authToken = document.getElementById('authToken').value.trim();

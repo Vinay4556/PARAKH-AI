@@ -4,10 +4,42 @@ Stores document binary data in PostgreSQL/SQLite instead of filesystem
 Works for both local development and cloud deployment
 """
 import io
+import time
 import mimetypes
 from datetime import datetime
 from contextlib import contextmanager
+from functools import wraps
+from sqlalchemy.exc import OperationalError, DBAPIError
 from database.db import db, Document
+
+
+def retry_on_db_error(max_attempts=3, delay=1):
+    """Retry decorator for database operations that may fail due to transient connection issues"""
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            last_error = None
+            for attempt in range(max_attempts):
+                try:
+                    return func(*args, **kwargs)
+                except (OperationalError, DBAPIError) as e:
+                    last_error = e
+                    if attempt < max_attempts - 1:
+                        # Exponential backoff
+                        wait_time = delay * (2 ** attempt)
+                        print(f"[DB] Connection error on attempt {attempt + 1}, retrying in {wait_time}s: {str(e)[:100]}")
+                        time.sleep(wait_time)
+                        # Try to recover the session
+                        try:
+                            db.session.rollback()
+                        except Exception:
+                            pass
+                    else:
+                        print(f"[DB] Max retry attempts ({max_attempts}) reached: {str(e)}")
+                        raise
+            raise last_error
+        return wrapper
+    return decorator
 
 
 @contextmanager
@@ -24,6 +56,7 @@ def session_scope():
         pass  # Don't close the session - Flask-SQLAlchemy manages it
 
 
+@retry_on_db_error(max_attempts=3, delay=1)
 def store_document_in_db(
     doc_id,
     bidder_id,
@@ -268,6 +301,7 @@ def delete_document(doc_id):
         return True
 
 
+@retry_on_db_error(max_attempts=3, delay=1)
 def get_documents_by_bidder(bidder_id):
     """
     Get all documents for a specific bidder (metadata only, no binary)
