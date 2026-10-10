@@ -19,7 +19,7 @@ export default function BidderClarifications() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { addToast } = useToast()
-  const bidderId = user?.organization_id || 'BID-001'
+  const bidderId = user?.organization_id || 'BID-SUB-001'
 
   const [clarifications, setClarifications] = useState([])
   const [loading, setLoading] = useState(true)

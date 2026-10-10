@@ -47,7 +47,7 @@ export default function Documents() {
   const { t } = useLanguage()
   const [bidders, setBidders] = useState([])
   const [selectedBidder, setSelectedBidder] = useState(
-    user?.role === 'BIDDER' ? (user?.organization_id || 'BID-001') : 'BID-001'
+    user?.role === 'BIDDER' ? (user?.organization_id || 'BID-SUB-001') : 'BID-SUB-001'
   )
   const [tenders, setTenders] = useState([])
   const [selectedTender, setSelectedTender] = useState('')
@@ -90,14 +90,14 @@ export default function Documents() {
 
   const setFallbackBidders = () => {
     // UI safety-net only — shown when the tender/bidder API is unavailable.
-    // BID-001/002/003 are the known demo bidders. Real bidders registered via
+    // BID-SUB-001/002/003 are the known demo bidders. Real bidders registered via
     // the form will appear once the API is reachable again.
-    // BID-004 is intentionally excluded: it was a test registration with
+    // BID-SUB-004 is intentionally excluded: it was a test registration with
     // placeholder data that has been cleaned from the data layer.
     setBidders([
-      { id: 'BID-001', name: 'ABC Technologies Pvt Ltd' },
-      { id: 'BID-002', name: 'Bharat Industrial Systems Pvt Ltd' },
-      { id: 'BID-003', name: 'Nova Engineering Solutions Pvt Ltd' },
+      { id: 'BID-SUB-001', name: 'ABC Technologies Pvt Ltd' },
+      { id: 'BID-SUB-002', name: 'Bharat Industrial Systems Pvt Ltd' },
+      { id: 'BID-SUB-003', name: 'Nova Engineering Solutions Pvt Ltd' },
     ])
   }
 

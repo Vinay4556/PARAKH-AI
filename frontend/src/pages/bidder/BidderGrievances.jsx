@@ -57,7 +57,7 @@ export default function BidderGrievances() {
     try {
       await submitGrievance({
         ...form,
-        bidder_id: user?.organization_id || 'BID-001',
+        bidder_id: user?.organization_id || 'BID-SUB-001',
         submitter_name: user?.name || 'Bidder',
       })
       addToast('Grievance submitted successfully', 'success')

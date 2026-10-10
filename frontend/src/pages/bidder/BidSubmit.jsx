@@ -49,7 +49,7 @@ export default function BidSubmit() {
   const [showConfirm, setShowConfirm] = useState(false)
   const [loadingExisting, setLoadingExisting] = useState(isEditMode)
 
-  const bidderId = user?.organization_id || 'BID-001'
+  const bidderId = user?.organization_id || 'BID-SUB-001'
   const bidderName = user?.organization_name || 'ABC Technologies Pvt Ltd'
 
   // ── Financial bid state ───────────────────────────────────

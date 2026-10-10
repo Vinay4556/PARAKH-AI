@@ -20,7 +20,7 @@ export default function BidReadiness() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { t } = useLanguage()
-  const bidderId = user?.organization_id || 'BID-001'
+  const bidderId = user?.organization_id || 'BID-SUB-001'
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('ALL')

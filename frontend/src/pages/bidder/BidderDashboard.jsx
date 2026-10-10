@@ -144,7 +144,7 @@ export default function BidderDashboard() {
   const [loading, setLoading]           = useState(true)
   const [feedbackRecords, setFeedback]  = useState([])
 
-  const bidderId = user?.organization_id || 'BID-001'
+  const bidderId = user?.organization_id || 'BID-SUB-001'
 
   useEffect(() => {
     Promise.all([

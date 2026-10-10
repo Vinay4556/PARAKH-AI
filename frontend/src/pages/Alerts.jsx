@@ -48,9 +48,9 @@ const SEVERITY_CONFIG = {
 }
 
 const BIDDER_NAMES = {
-  'BID-001': 'ABC Technologies Pvt Ltd',
-  'BID-002': 'Bharat Industrial Systems Pvt Ltd',
-  'BID-003': 'Nova Engineering Solutions Pvt Ltd',
+  'BID-SUB-001': 'ABC Technologies Pvt Ltd',
+  'BID-SUB-002': 'Bharat Industrial Systems Pvt Ltd',
+  'BID-SUB-003': 'Nova Engineering Solutions Pvt Ltd',
 }
 
 function timeAgo(ts) {

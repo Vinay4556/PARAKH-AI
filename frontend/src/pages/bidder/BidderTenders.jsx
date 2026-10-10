@@ -14,7 +14,7 @@ export default function BidderTenders() {
   const navigate = useNavigate()
   const { addToast } = useToast()
   const { user } = useAuth()
-  const bidderId = user?.organization_id || 'BID-001'
+  const bidderId = user?.organization_id || 'BID-SUB-001'
   const [tenders, setTenders] = useState([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
